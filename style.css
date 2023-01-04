@@ -2,23 +2,32 @@ body {
 }
 
 header {
-  background-color: rgb(112, 112, 112);
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
+  background-color: rgb(112, 112, 112);
+
   width: 100%;
-  height: 130px;
+  height: 150px;
 
   justify-content: space-evenly;
   align-items: center;
 }
 
 .logo {
+  padding-top: 30px;
+  background-color: rgb(112, 112, 112);
+  text-align: center;
+  width: 100%;
 }
 
 /* ------ ICONS MENU TOOGLE--------- */
-
-.toggle-menu {
+.menu__container {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgb(112, 112, 112);
+}
+.menu-img {
   width: 50px;
 }
 
@@ -31,4 +40,18 @@ header {
 
 .disable {
   display: none;
+}
+
+/* CUOTAS */
+
+.cuotas p {
+  font-family: sans-serif;
+  font-size: 30px;
+  padding: 10px 0px 10px 0px;
+  margin: 0;
+  background-color: rgb(156, 131, 113);
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  color: rgb(255, 255, 255);
 }

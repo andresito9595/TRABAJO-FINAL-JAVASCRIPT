@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Normalize/normalize.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Javascript E-commerce</title>
   </head>
@@ -14,28 +18,49 @@
         <img src="Icons/logo.webp" alt="" />
       </div>
 
-      <!-- <div class="div-icons">
-        <div class="cart img-icons">
-          <img src="Icons/cart.svg" alt="carro de compra" />
-        </div>
-        <div class="favorites img-icons">
-          <img src="Icons/favorite.svg" alt="favoritos" />
-        </div>
-        <div class="profile img-icons">
-          <img src="Icons/profile.svg" alt="perfil" />
-        </div>
-      </div> -->
-
       <div class="menu__container">
-        <img class="menu-img" src="Icons/menu.svg" alt="menu hamburguesa" />
+        <div class="toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="div-icons">
+          <div class="profile img-icons">
+            <img src="Icons/profile.svg" alt="perfil" />
+          </div>
+          <div class="cart img-icons">
+            <img src="Icons/cart.svg" alt="carro de compra" />
+          </div>
+          <div class="favorites img-icons">
+            <img src="Icons/favorite.svg" alt="favoritos" />
+          </div>
+        </div>
       </div>
     </header>
-
-    <div class="cuotas">
-      <p class="cuotas_p">3 y 6 cuotas sin interes todos los dias</p>
-    </div>
-    <main></main>
-
-    <script src="main.js"></script>
+    <main>
+      <div class="cuotas">
+        <img src="Icons/billetera.png" alt="" />
+        <p class="cuotas_p">3 & 6 cuotas sin interés</p>
+        <img src="Icons/billetera.png" alt="" />
+      </div>
+      <div class="portada">
+        <img
+          class="img1"
+          src="PORTADA IMG/027de1_64036d367edd49b4949c661ca648b69d_mv2 (1).webp"
+          alt=""
+        />
+        <img
+          class="img2"
+          src="PORTADA IMG/027de1_64036d367edd49b4949c661ca648b69d_mv2.webp"
+          alt=""
+        />
+        <img
+          class="img3"
+          src="PORTADA IMG/027de1_b5b1c8bb1b33487c9d5496c301f1fa5d_mv2.webp"
+          alt=""
+        />
+      </div>
+    </main>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

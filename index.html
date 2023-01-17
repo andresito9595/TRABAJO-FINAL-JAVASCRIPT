@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Normalize/normalize.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="style.css" />
     <title>Javascript E-commerce</title>
@@ -28,14 +28,26 @@
               <img src="Icons/profile.svg" alt="perfil" />
             </div> -->
 
-        <img src="Icons/search.svg" alt="boton de busqueda" />
+        <img
+          class="search-icon"
+          src="Icons/search.svg"
+          alt="boton de busqueda"
+        />
 
         <img src="Icons/cart.svg" alt="carro de compra" />
 
         <img src="Icons/favorite.svg" alt="favoritos" />
       </div>
     </header>
-
+    <nav class="search_container">
+      <form action="">
+        <input
+          class="input-search"
+          type="text"
+          placeholder="Ingrese un articulo..."
+        />
+      </form>
+    </nav>
     <main>
       <div class="cuotas">
         <img src="Icons/billetera.png" alt="" />
@@ -60,6 +72,8 @@
         />
       </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <script type="module" src="main.js"></script>
   </body>
 </html>

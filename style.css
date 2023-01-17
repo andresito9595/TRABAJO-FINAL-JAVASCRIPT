@@ -106,7 +106,9 @@ form {
   position: relative;
   width: 100%;
 }
-
+.toggle span:focus {
+  width: 0%;
+}
 .portada img {
   width: 100%;
   position: absolute;

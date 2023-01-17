@@ -4,12 +4,11 @@ const IMPUT_SEARCH = document.querySelector('.input-search')
 
 const deployMenu = (e) => {
 
-    return IMPUT_SEARCH.classList.toggle('menu_active')
+    IMPUT_SEARCH.classList.toggle('menu_active')
+    IMPUT_SEARCH.focus()
+
 
 }
-
-
-
 
 
 

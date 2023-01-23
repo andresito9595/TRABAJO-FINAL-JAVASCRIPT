@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Normalize/normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
     <title>Javascript E-commerce</title>
   </head>
   <body>
@@ -54,26 +55,60 @@
         <p class="cuotas_p">3 & 6 cuotas sin interés</p>
         <img src="Icons/billetera.png" alt="" />
       </div>
-      <div class="portada">
-        <img
-          class="img1"
-          src="PORTADA IMG/027de1_64036d367edd49b4949c661ca648b69d_mv2 (1).webp"
-          alt=""
-        />
-        <img
-          class="img2"
-          src="PORTADA IMG/027de1_64036d367edd49b4949c661ca648b69d_mv2.webp"
-          alt=""
-        />
-        <img
-          class="img3"
-          src="PORTADA IMG/027de1_b5b1c8bb1b33487c9d5496c301f1fa5d_mv2.webp"
-          alt=""
-        />
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img
+              src="PORTADA IMG/027de1_64036d367edd49b4949c661ca648b69d_mv2 (1).webp"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="PORTADA IMG/027de1_64036d367edd49b4949c661ca648b69d_mv2.webp"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="PORTADA IMG/027de1_b5b1c8bb1b33487c9d5496c301f1fa5d_mv2.webp"
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="promo__div">
+        <img src="Icons/cards.png" alt="" />
+        <p class="promo__p">PROMOCIONES</p>
+      </div>
+      <div class="cardProduct__div">
+        <div class="discount"><p>12%OFF</p></div>
+        <div class="cardProduct__card">
+          <img class="cardProduct__img" src="Muebles/Exterior/1.jpg" alt="" />
+          <p class="cardProduct__name">SET JARDIN EXTERIOR</p>
+          <p class="cardProduct__details">MESA RUEDAS DE MADERA 100 X 70 CM</p>
+          <p class="cardProduct__cuotas">12 CUOTAS SIN INTERES DE $8000</p>
+          <p class="cardProduct__precio">$ 105000</p>
+          <button class="cardProduct__btn" type="submit">COMPRAR</button>
+        </div>
+        <div class="cardProduct__card">
+          <div class="discount"><p>12%OFF</p></div>
+          <img class="cardProduct__img" src="Muebles/Exterior/1.jpg" alt="" />
+          <p class="cardProduct__name">SET JARDIN EXTERIOR</p>
+          <p class="cardProduct__details">MESA RUEDAS DE MADERA 100 X 70 CM</p>
+          <p class="cardProduct__cuotas">12 CUOTAS SIN INTERES DE $8000</p>
+          <p class="cardProduct__precio">$ 105000</p>
+          <button class="cardProduct__btn" type="submit">COMPRAR</button>
+        </div>
       </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
     <script type="module" src="main.js"></script>
   </body>
 </html>

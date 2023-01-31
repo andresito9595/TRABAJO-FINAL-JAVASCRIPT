@@ -48,32 +48,31 @@ header {
 }
 
 .toggle > div {
-  border-radius: 30px;
-  width: 30px;
-  height: 4px;
+  border-radius: 30%;
+  width: 27px;
+  height: 3.5px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgb(66, 52, 52) 0px 0px 2px 1px;
   transition: all 0.5s;
   transform-origin: left;
 }
 
-.toggle:hover div:first-child {
+.toggle1:hover div:first-child {
   transform: rotate(45deg);
   background-color: rgb(60, 34, 34);
   box-shadow: none;
 }
-.toggle:hover div:nth-child(2) {
+.toggle1:hover div:nth-child(2) {
   background-color: blue;
   opacity: 0;
 }
-.toggle:hover div:last-child {
+.toggle1:hover div:last-child {
   background-color: rgb(39, 15, 15);
   transform: rotate(-45deg);
   box-shadow: none;
 }
-.toggle:hover div {
-}
-/*  iconos  menu burguer */
+
+/*  iconos  menu burger */
 .div-icons {
   display: flex;
   justify-content: space-between;
@@ -89,39 +88,40 @@ header {
 .div-icons img:last-child {
   margin-right: 14px;
 }
-/* MENU BURGUER */
+/* MENU burger */
 
-.burguer__div {
+.burger__div {
   font-size: 30px;
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed;
   justify-content: flex-start;
-  z-index: 990;
+  z-index: 995;
   top: 80px;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: var(--secundary-color);
   color: #bbe7e8;
+  visibility: hidden;
 }
-.burguer__section {
+.burger__section {
   border: rgba(15, 7, 7, 0.873) solid 1px;
   display: flex;
   justify-content: space-between;
 }
 
-.burguer__p {
+.burger__p {
   margin-left: 5px;
   padding: 20px;
 }
-.burguer__img {
+.burger__img {
   display: none;
   background-color: rgba(76, 99, 119, 0);
   width: 2rem;
   margin-right: 25px;
 }
-.burguer__ul {
+.burger__ul {
   width: 100%;
   height: 50%;
   display: flex;
@@ -130,7 +130,7 @@ header {
 
   padding: 0;
 }
-.burguer__li1 {
+.burger__li1 {
   display: flex;
   align-items: center;
   width: 100%;
@@ -142,25 +142,26 @@ header {
   list-style: none;
   font-size: 20px;
 }
-.burguer__li1 a {
+.burger__li1 a {
   color: #bbe7e8;
   text-decoration: none;
 }
-.burguer__li1 a::after {
+.burger__li1 a::after {
   position: absolute;
   right: 23px;
   content: "+";
 }
-.burguer__li2 {
+.burger__li2 {
   display: none;
 }
-.burguer__help {
+.burger__help {
   text-align: center;
   background-color: rgb(0, 0, 0);
   width: 100%;
 }
-.burguer__active {
-  display: none;
+.burger__active {
+  visibility: visible;
+  top: 80px;
 }
 
 main {
@@ -201,12 +202,14 @@ form {
 
 /* CUOTAS */
 .cuotas {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   background-color: rgb(156, 131, 113);
   height: 50px;
+  top: 80px;
 }
 .cuotas_p {
   font-size: 20px;
@@ -220,6 +223,8 @@ form {
 /* PORTADA */
 
 .swiper {
+  position: relative;
+  top: 79px;
   width: 100%;
 }
 .swiper img {

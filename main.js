@@ -27,7 +27,7 @@ const swiper = new Swiper('.swiper', {
 
 const deployMenu = (e) => {
 
-    if (e.target.matches('.toggle *')) {
+    if (e.target.matches('.toggle *') || e.target.matches('.toggle')) {
 
         BTN_burger.classList.toggle('toggle1')
         burger_MENU.classList.toggle('burger__active')

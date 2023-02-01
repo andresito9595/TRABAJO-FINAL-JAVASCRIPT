@@ -7,7 +7,7 @@ const IMPUT_SEARCH = document.querySelector('.input-search')
 /* burger MENU */
 
 const BTN_burger = document.querySelector('.toggle')
-const burger_MENU = document.querySelector('.burger__div')
+const BURGER_MENU = document.querySelector('.burger__div')
 
 
 const swiper = new Swiper('.swiper', {
@@ -30,7 +30,7 @@ const deployMenu = (e) => {
     if (e.target.matches('.toggle *') || e.target.matches('.toggle')) {
 
         BTN_burger.classList.toggle('toggle1')
-        burger_MENU.classList.toggle('burger__active')
+        BURGER_MENU.classList.toggle('burger__active')
     }
 
 }
@@ -48,7 +48,7 @@ const deploySearch = (e) => {
 
 const searching = (e) => {
 
-    console.log(e.target.value)
+
 
 }
 
@@ -56,8 +56,8 @@ const searching = (e) => {
 
 const init = () => {
 
-    SEARCH_ICON.addEventListener('click', deploySearch)
-    IMPUT_SEARCH.addEventListener('keyup', searching)
+    SEARCH_ICON.addEventListener('click', deploySearch);
+    IMPUT_SEARCH.addEventListener('keyup', searching);
     BTN_burger.addEventListener('click', deployMenu)
 }
 

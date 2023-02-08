@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="Normalize/normalize.css" />
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Normalize/normalize.css" />
-    <link rel="stylesheet" href="style.css" />
-
+    <link rel="stylesheet" href="style-sectionProducts.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-    <title>Javascript E-commerce</title>
+    <title>Nuestros Productos</title>
   </head>
+
   <body>
     <!-- burger MENU -->
 
@@ -22,7 +23,7 @@
       </div>
 
       <div class="burger__section burger__section-categorias">
-        <p class="burger__p"><a href="section-products.html">Categorias</a></p>
+        <p class="burger__p">Categorias</p>
       </div>
       <ul class="burger__ul">
         <li class="burger__li1">
@@ -132,18 +133,56 @@
 
         <div class="swiper-pagination"></div>
       </div>
-      <div class="promo__div">
-        <img src="Icons/cards.png" alt="" />
-        <p class="promo__p">PROMOCIONES</p>
-      </div>
-      <div class="portada__products">
-        <img src="Portada Product/banner_seccion_3901.jpg" alt="" />
-        <img src="Portada Product/banner_seccion_3903.jpg" alt="" />
-        <img src="Portada Product/banner_seccion_3904.jpg" alt="" />
-        <img src="Portada Product/banner_seccion_3907.jpg" alt="" />
-        <img src="Portada Product/banner_seccion_3908.jpg" alt="" />
-        <img src="Portada Product/banner_seccion_3909.jpg" alt="" />
-        <img src="Portada Product/banner_seccion_3910.jpg" alt="" />
+      <section class="section-products">
+        <div class="category-container">
+          <h2>Name Category</h2>
+        </div>
+        <div class="orderAndFilter">
+          <div class="order_div">
+            <img src="Icons/order.png" alt="" />
+            <p class="order_p">Order</p>
+          </div>
+          <div class="filter_div">
+            <img src="Icons/filter.png" alt="" />
+            <p class="filter_p">Filter</p>
+          </div>
+        </div>
+      </section>
+      <div class="cardProduct__div">
+        <div class="cardProduct__card">
+          <div class="discount-silla"><p>12%OFF</p></div>
+          <img
+            class="cardProduct__img-silla"
+            src="Muebles/Sillas/3.webp"
+            alt=""
+          />
+          <p class="cardProduct__name-silla">SET JARDIN EXTERIOR</p>
+          <p class="cardProduct__details-silla">
+            MESA RUEDAS DE MADERA 100 X 70 CM
+          </p>
+          <p class="cardProduct__cuotas-silla">
+            12 CUOTAS SIN INTERES DE $8000
+          </p>
+          <p class="cardProduct__precioDiscount-silla">$ 135000</p>
+          <p class="cardProduct__precio-silla">$ 105000</p>
+          <input class="cardProduct__btn-silla" type="submit" value="COMPRAR" />
+        </div>
+        <div class="cardProduct__card">
+          <div class="discount-silla"><p>12%OFF</p></div>
+          <img
+            class="cardProduct__img-set"
+            src="Muebles/Exterior/1.jpg"
+            alt=""
+          />
+          <p class="cardProduct__name-set">SET JARDIN EXTERIOR</p>
+          <p class="cardProduct__details-set">
+            MESA RUEDAS DE MADERA 100 X 70 CM
+          </p>
+          <p class="cardProduct__cuotas-set">12 CUOTAS SIN INTERES DE $8000</p>
+          <p class="cardProduct__precioDiscount-set">$ 135000</p>
+          <p class="cardProduct__precio-set">$ 105000</p>
+          <input class="cardProduct__btn-set" type="submit" value="COMPRAR" />
+        </div>
       </div>
     </main>
     <footer class="footer">
@@ -172,5 +211,6 @@
       </div>
     </footer>
     <script type="module" src="main.js"></script>
+    <script src="js-products.js"></script>
   </body>
 </html>

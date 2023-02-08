@@ -5,7 +5,7 @@ import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.brow
 const FORM = document.querySelector('form')
 const SEARCH_ICON = document.querySelector('.search-icon')
 const IMPUT_SEARCH = document.querySelector('.input-search')
-const MAIN = document.querySelector('main')
+const BODY = document.querySelector('body')
 
 /* burger MENU */
 
@@ -34,7 +34,7 @@ const deployMenu = (e) => {
 
         BTN_burger.classList.toggle('toggle1')
         BURGER_MENU.classList.toggle('burger__menu-active');
-        MAIN.classList.toggle('overflow')
+        BODY.classList.toggle('overflow')
 
     }
 }

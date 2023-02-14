@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Normalize/normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./estilos/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <title>Javascript E-commerce</title>
+  </head>
+  <body>
+    <!-- burger MENU -->
+
+    <div class="burger__div">
+      <div class="burger__section burger__section-login">
+        <a href="login.html">LOGIN / REGISTRO</a>
+      </div>
+
+      <div class="burger__section burger__section-categorias">
+        <p class="burger__p"><a href="section-products.html">Categorias</a></p>
+      </div>
+      <ul class="burger__ul">
+        <li class="burger__li1">
+          <a href="#" class="submenu_link">Habitacion</a>
+          <ul class="burger__ul2">
+            <li class="burger__li2"><a href="#">Sommiers</a></li>
+            <li class="burger__li2"><a href="#">Roperos</a></li>
+          </ul>
+        </li>
+        <li class="burger__li1">
+          <a class="submenu_link" href="#">Interior</a>
+          <ul class="burger__ul2">
+            <li class="burger__li2"><a href="#">Sillas</a></li>
+            <li class="burger__li2"><a href="#">Mesas</a></li>
+            <li class="burger__li2"><a href="#">Sofas</a></li>
+          </ul>
+        </li>
+        <li class="burger__li1">
+          <a href="#" class="submenu_link">Exterior</a>
+          <ul class="burger__ul2">
+            <li class="burger__li2">
+              <a
+                data-category="exterior"
+                id="EXTERIOR"
+                href="./section-products.html"
+                class="submenu_link-exterior"
+                >Sets Exterior</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="burger__section burger__section-help">
+        <ul class="burger__help-ul">
+          <li><a href="contact.html" class="burger__help-p">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="burger__section burger__section-help">
+        <ul class="burger__help-ul">
+          <li>
+            <a href="pay-metods.html" class="burger__help-p">Medios de Pago</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+    <header>
+      <div class="toggle">
+        <div class="toggle__div"></div>
+        <div class="toggle__div"></div>
+        <div class="toggle__div"></div>
+      </div>
+      <div class="logo">
+        <a href="index.html"><img src="Icons/logo.webp" alt="" /></a>
+      </div>
+
+      <div class="div-icons">
+        <img
+          class="search-icon"
+          src="Icons/search.svg"
+          alt="lupa de busqueda"
+        />
+
+        <img src="Icons/cart.svg" alt="carro de compra" />
+
+        <img src="Icons/favorite.svg" alt="favoritos" />
+      </div>
+    </header>
+    <nav class="search_container">
+      <form action="">
+        <input
+          class="input-search"
+          type="text"
+          placeholder="Ingrese un articulo..."
+        />
+      </form>
+    </nav>
+    <main>
+        <div class="div-form">
+            <form action="submit">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" autocomplete="off" type="text" />
+              <label for=pass">Contraseña</label>
+              <input id="pass" autocomplete="off" type="password" />
+              
+              <input id="btn" type="submit" value="Login"  />
+            </form>
+            <p class="registro">No tienes una Cuenta? <a href="register.html">Haz Click Aqui</a></p>
+          </div>
+          
+    </main>
+    <footer class="footer">
+      <div class="footer__Logo">
+        <img src="Icons/logo.webp" alt="" />
+      </div>
+      <div class="footer__Menu">
+        <a href="index.html">Home</a>
+        <a href="who-are-we.html">¿Quienes Somos?</a>
+
+        <a href="">Botón de Arrepentimiento</a>
+        <a href="">Terminos y Condiciones</a>
+        <a href="">Politicas de Privacidad</a>
+      </div>
+      <div class="footer__Social">
+        <a href="google.com.ar"><img src="Icons/facebook.svg" alt="" /></a>
+        <a href="google.com.ar"><img src="Icons/instagram.svg" alt="" /></a>
+      </div>
+      <div class="footer__Contact">
+        <p>Telefono: +54 3804989844</p>
+        <p>Email: info@chenillemuebles.com.ar</p>
+        <p>Av. Rivadavia 1950 - La Rioja Capital</p>
+      </div>
+      <div class="footer__Certification">
+        <img src="Icons/security.png" alt="" />
+      </div>
+    </footer>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="js-products.js"></script>
+  </body>
+</html>

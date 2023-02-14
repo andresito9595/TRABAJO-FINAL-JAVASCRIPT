@@ -1,0 +1,48 @@
+.div-form {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+}
+form {
+  padding-top: 20px;
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form label {
+  color: white;
+  font-weight: 600;
+}
+form input {
+  width: 80%;
+  background-color: #ead7d7;
+  margin: 5px;
+  padding: 5px;
+  outline: none;
+  font-size: 20px;
+}
+#btn {
+  margin-top: 18px;
+  width: 30%;
+}
+.registro {
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+}
+.registro a {
+  color: white;
+  font-weight: 600;
+}

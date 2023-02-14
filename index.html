@@ -18,7 +18,7 @@
 
     <div class="burger__div">
       <div class="burger__section burger__section-login">
-        <a href="">LOGIN / REGISTRO</a>
+        <a href="login.html">LOGIN / REGISTRO</a>
       </div>
 
       <div class="burger__section burger__section-categorias">
@@ -28,7 +28,7 @@
         <li class="burger__li1">
           <a href="#" class="submenu_link">Habitacion</a>
           <ul class="burger__ul2">
-            <li class="burger__li2"><a href="#">Camas</a></li>
+            <li class="burger__li2"><a href="#">Sommiers</a></li>
             <li class="burger__li2"><a href="#">Roperos</a></li>
           </ul>
         </li>
@@ -41,27 +41,31 @@
           </ul>
         </li>
         <li class="burger__li1">
-          <a href="#EXTERIOR" class="submenu_link">Exterior</a>
+          <a href="#" class="submenu_link">Exterior</a>
           <ul class="burger__ul2">
             <li class="burger__li2">
-              <a id="EXTERIOR" href="#">Sets Exterior</a>
+              <a
+                data-category="exterior"
+                id="EXTERIOR"
+                href="./section-products.html"
+                class="submenu_link-exterior"
+                >Sets Exterior</a
+              >
             </li>
           </ul>
         </li>
       </ul>
+
       <div class="burger__section burger__section-help">
         <ul class="burger__help-ul">
-          <li><p class="burger__help-p">¿Necesita ayuda para comprar?</p></li>
+          <li><a href="contact.html" class="burger__help-p">Contacto</a></li>
         </ul>
       </div>
       <div class="burger__section burger__section-help">
         <ul class="burger__help-ul">
-          <li><p class="burger__help-p">Contacto</p></li>
-        </ul>
-      </div>
-      <div class="burger__section burger__section-help">
-        <ul class="burger__help-ul">
-          <li><p class="burger__help-p">Medios de Pago</p></li>
+          <li>
+            <a href="pay-metods.html" class="burger__help-p">Medios de Pago</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -152,15 +156,15 @@
       </div>
       <div class="footer__Menu">
         <a href="index.html">Home</a>
-        <a href="">¿Quienes Somos?</a>
-        <a href="">¿Cómo comprar?</a>
+        <a href="who-are-we.html">¿Quienes Somos?</a>
+
         <a href="">Botón de Arrepentimiento</a>
         <a href="">Terminos y Condiciones</a>
         <a href="">Politicas de Privacidad</a>
       </div>
       <div class="footer__Social">
         <a href="google.com.ar"><img src="Icons/facebook.svg" alt="" /></a>
-        <a href=""><img src="Icons/instagram.svg" alt="" /></a>
+        <a href="google.com.ar"><img src="Icons/instagram.svg" alt="" /></a>
       </div>
       <div class="footer__Contact">
         <p>Telefono: +54 3804989844</p>
@@ -172,5 +176,6 @@
       </div>
     </footer>
     <script type="module" src="main.js"></script>
+    <script type="module" src="js-products.js"></script>
   </body>
 </html>

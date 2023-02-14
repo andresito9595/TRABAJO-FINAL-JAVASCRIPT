@@ -364,7 +364,7 @@ main {
 }
 /* CARD SILLAS */
 
-.discount-silla {
+.discount-sillas {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -378,41 +378,41 @@ main {
   border-radius: 20px;
   color: white;
 }
-.discount-silla p {
+.discount-sillas p {
   font-size: 12px;
   margin: 0;
   padding: 5px 7px;
 }
-.cardProduct__img-silla {
+.cardProduct__img-sillas {
   margin-top: 10px;
   height: 50%;
   border-radius: 5px;
 }
 
-.cardProduct__name-silla {
+.cardProduct__name-sillas {
   font-size: 16px;
   font-weight: 800;
 }
-.cardProduct__details-silla {
+.cardProduct__details-sillas {
   font-size: 12px;
 }
-.cardProduct__cuotas-silla {
+.cardProduct__cuotas-sillas {
   font-size: 15px;
   font-weight: 800;
 }
-.cardProduct__precioDiscount-silla {
+.cardProduct__precioDiscount-sillas {
   text-decoration: line-through;
   font-weight: 600;
   font-size: 16px;
   height: 10px;
 }
-.cardProduct__precio-silla {
+.cardProduct__precio-sillas {
   font-size: 25px;
   font-weight: 800;
   height: 25px;
   margin: 0;
 }
-.cardProduct__btn-silla {
+.cardProduct__btn-sillas {
   border: none;
   width: 150px;
   height: 35px;
@@ -427,34 +427,34 @@ main {
 
 /*  SET EXTERIOR */
 
-.cardProduct__img-set {
+.cardProduct__img-Exterior {
   width: 90%;
   border-radius: 5px;
 }
 
-.cardProduct__name-set {
+.cardProduct__name-Exterior {
   font-size: 18px;
   font-weight: 800;
 }
-.cardProduct__details-set {
+.cardProduct__details-Exterior {
   font-size: 15px;
 }
-.cardProduct__cuotas-set {
+.cardProduct__cuotas-Exterior {
   font-size: 15px;
   font-weight: 800;
 }
-.cardProduct__precioDiscount-set {
+.cardProduct__precioDiscount-Exterior {
   text-decoration: line-through;
   font-weight: 600;
   font-size: 16px;
 }
-.cardProduct__precio-set {
+.cardProduct__precio-Exterior {
   font-size: 25px;
   font-weight: 800;
   height: 20px;
   margin: 0;
 }
-.cardProduct__btn-set {
+.cardProduct__btn-Exterior {
   border: NONE;
   width: 150px;
   height: 35px;

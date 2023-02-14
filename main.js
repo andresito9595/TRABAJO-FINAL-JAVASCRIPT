@@ -12,7 +12,21 @@ const BODY = document.querySelector('body')
 const BTN_burger = document.querySelector('.toggle')
 const BURGER_MENU = document.querySelector('.burger__div')
 const SUBMENU_BTN = document.querySelectorAll('.submenu_link')
-const DIV_SUBMENU = document.querySelector('.burger__ul2')
+
+
+
+
+/* LOCAL STORAGE */
+
+let categorySelected = JSON.parse(localStorage.getItem('category')) || []
+
+const savedCategory = (categorySelected) => localStorage.setItem('category', JSON.stringify(categorySelected))
+
+const resetLocalStorage = () => localStorage.setItem('category', JSON.stringify([]))
+
+/* PRODUCTS RENDER */
+
+const LINK = document.querySelector('.submenu_link-exterior')
 
 const swiper = new Swiper('.swiper', {
     // Optional parameters
@@ -43,7 +57,6 @@ const deploySearch = (e) => {
 
     IMPUT_SEARCH.classList.toggle('search_active')
     IMPUT_SEARCH.focus()
-
     FORM.reset()
 }
 
@@ -62,28 +75,29 @@ function deploySubMenu(e) {
     if (childMenu.classList.contains('desplegar')) {
         childMenu.classList.remove('desplegar')
         childMenu.removeAttribute('style')
-
     } else {
         childMenu.classList.add('desplegar')
         childMenu.style.height = `${height1 * childMenu.children.length * 2}px`
-
     }
+}
+const renderCategory = (e) => {
+    e.preventDefault();
 
 
-
-
-
+    CategoryFilter(categorySelected)
 
 
 
 }
-
 const init = () => {
 
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searching);
     BTN_burger.addEventListener('click', deployMenu);
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
+    /* window.addEventListener('DOMContentLoaded', allProductsRender) */
+    LINK.addEventListener('click', renderCategory)
+
 }
 
 

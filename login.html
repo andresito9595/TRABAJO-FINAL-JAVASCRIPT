@@ -102,18 +102,34 @@
       </form>
     </nav>
     <main>
-        <div class="div-form">
-            <form action="submit">
-              <label for="nombre">Nombre</label>
-              <input id="nombre" autocomplete="off" type="text" />
-              <label for=pass">Contraseña</label>
-              <input id="pass" autocomplete="off" type="password" />
-              
-              <input id="btn" type="submit" value="Login"  />
-            </form>
-            <p class="registro">No tienes una Cuenta? <a href="register.html">Haz Click Aqui</a></p>
-          </div>
-          
+      <div class="div-form">
+        <form class="form_contact" action="submit">
+          <input
+            class="input_active"
+            placeholder="Username"
+            id="nombre"
+            autocomplete="off"
+            type="text"
+          />
+
+          <input
+            placeholder="Password"
+            class="input_active"
+            id="pass"
+            autocomplete="off"
+            type="password"
+          />
+
+          <input id="btn" type="submit" value="Login" />
+          <p class="registro">
+            No tienes una Cuenta? <a href="register.html">Haz Click Aqui</a>
+          </p>
+          <p class="registro">
+            Olvidate tu contraseña?
+            <a href="register.html">Recuperar Password</a>
+          </p>
+        </form>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer__Logo">

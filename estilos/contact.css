@@ -5,7 +5,7 @@
 }
 main {
 }
-form {
+.form_contact {
   padding-top: 20px;
   position: relative;
   top: 80px;
@@ -15,11 +15,11 @@ form {
   flex-direction: column;
   align-items: center;
 }
-form label {
+.form_contact label {
   color: white;
   font-weight: 600;
 }
-form input {
+.form_contact input {
   width: 80%;
 
   margin: 7px;

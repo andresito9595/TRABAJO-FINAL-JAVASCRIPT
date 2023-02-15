@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Normalize/normalize.css" />
     <link rel="stylesheet" href="style.css" />
-
+    <link rel="stylesheet" href="./estilos/register.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
@@ -101,7 +101,49 @@
         />
       </form>
     </nav>
-    <main></main>
+    <main>
+      <div class="div-form">
+        <form class="form_contact" action="submit">
+          <input
+            class="input_active"
+            id="nombre"
+            autocomplete="off"
+            type="text"
+            placeholder="Name"
+          />
+
+          <input
+            class="input_active"
+            id="surname"
+            autocomplete="off"
+            type="text"
+            placeholder="Surname"
+          />
+          <input
+            class="input_active"
+            id="email"
+            autocomplete="off"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            class="input_active"
+            id="pass"
+            autocomplete="off"
+            type="password"
+            placeholder="Password"
+          />
+          <input
+            class="input_active"
+            id="re-pass"
+            autocomplete="off"
+            type="password"
+            placeholder="Repeat password"
+          />
+          <input id="btn" type="submit" value="Registrarme" />
+        </form>
+      </div>
+    </main>
     <footer class="footer">
       <div class="footer__Logo">
         <img src="Icons/logo.webp" alt="" />

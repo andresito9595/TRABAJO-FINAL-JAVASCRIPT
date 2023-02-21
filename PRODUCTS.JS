@@ -83,7 +83,7 @@ export const sommiers = [{
     material: 'Colchon resortes y base de madera',
     price_normal: 90000,
     discount: 10,
-    img: './Muebles/Camas/1.jpg',
+    img: './Muebles/Sommiers/1.jpg',
     category: 'sommiers',
     id: 1
 
@@ -93,7 +93,7 @@ export const sommiers = [{
     material: 'Base Aluminio Colchon Resortes Resort',
     price_normal: 120000,
     discount: 10,
-    img: './Muebles/Camas/2.jpg',
+    img: './Muebles/Sommiers/2.jpg',
     category: 'sommiers',
     id: 2
 }, {
@@ -102,7 +102,7 @@ export const sommiers = [{
     material: 'Colchon Evalastic Base Reforzada metal',
     price_normal: 150000,
     discount: 5,
-    img: './Muebles/Camas/3.jpg',
+    img: './Muebles/Sommiers/3.jpg',
     category: 'sommiers',
     id: 3
 }, {
@@ -111,7 +111,7 @@ export const sommiers = [{
     material: 'Colchon Evalastic Algodon Euro Pillow',
     price_normal: 200000,
     discount: 12,
-    img: './Muebles/Camas/4.jpg',
+    img: './Muebles/Sommiers/4.jpg',
     category: 'sommiers',
     id: 4
 },]
@@ -119,12 +119,12 @@ export const sommiers = [{
 
 export const exterior = [{
     name: 'Set Mesa y Sillas Plasticos ',
-    description: 'Mesas 1,8M X 0.7M y Sillas Plastico Negro con relieve ',
+    description: ' Mesa 1,8M X 0.7M y Sillas Plastico Negro con relieve ',
     material: 'Plastico de alta resistencia',
     price_normal: 120000,
     discount: 12,
     img: './Muebles/Exterior/1.jpg',
-    category: 'Exterior',
+    category: 'exterior',
     id: 1,
 
 
@@ -135,7 +135,7 @@ export const exterior = [{
     price_normal: 200000,
     discount: 12,
     img: './Muebles/Exterior/2.jpg',
-    category: 'Exterior',
+    category: 'exterior',
     id: 2
 }, {
     name: 'Set Mesa y Sillas Blancas Anti-Humedad',
@@ -144,7 +144,7 @@ export const exterior = [{
     price_normal: 80000,
     discount: 12,
     img: './Muebles/Exterior/3.jpg',
-    category: 'Exterior',
+    category: 'exterior',
     id: 3
 }, {
     name: 'Set de Diseño Metalico',
@@ -153,7 +153,7 @@ export const exterior = [{
     price_normal: 250000,
     discount: 12,
     img: './Muebles/Exterior/4.jpg',
-    category: 'Exterior',
+    category: 'exterior',
     id: 4
 }, {
     name: 'Set Aluminio',
@@ -162,7 +162,7 @@ export const exterior = [{
     price_normal: 120000,
     discount: 12,
     img: './Muebles/Exterior/5.webp',
-    category: 'Exterior',
+    category: 'exterior',
     id: 5
 },]
 
@@ -173,7 +173,7 @@ export const mesas = [{
     price_normal: 100000,
     discount: 12,
     img: './Muebles/Mesas/1.jpg',
-    category: 'Mesas',
+    category: 'mesas',
     id: 1
 
 }, {
@@ -183,7 +183,7 @@ export const mesas = [{
     price_normal: 70000,
     discount: 12,
     img: './Muebles/Mesas/2.jpg',
-    category: 'Mesas',
+    category: 'mesas',
     id: 2
 }, {
     name: 'Mesa de Madera Roble',
@@ -192,7 +192,7 @@ export const mesas = [{
     price_normal: 200000,
     discount: 12,
     img: './Muebles/Mesas/3.webp',
-    category: 'Mesas',
+    category: 'mesas',
     id: 3
 }, {
     name: 'Mesa Bambu Liviana',
@@ -201,7 +201,7 @@ export const mesas = [{
     price_normal: 13000,
     discount: 12,
     img: './Muebles/Mesas/4.jpg',
-    category: 'Mesas',
+    category: 'mesas',
     id: 4
 }, {
     name: 'Mesa de Diseño Premium ',
@@ -210,7 +210,7 @@ export const mesas = [{
     price_normal: 300000,
     discount: 12,
     img: './Muebles/Mesas/5.jpg',
-    category: 'Mesas',
+    category: 'mesas',
     id: 5
 },]
 

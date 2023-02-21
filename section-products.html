@@ -19,37 +19,75 @@
 
     <div class="burger__div">
       <div class="burger__section burger__section-login">
-        <a href="">LOGIN / REGISTRO</a>
+        <a href="index.html">Home</a>
+      </div>
+      <div class="burger__section burger__section-login">
+        <a href="login.html">LOGIN / REGISTRO</a>
       </div>
 
       <div class="burger__section burger__section-categorias">
-        <p class="burger__p">Categorias</p>
+        <p class="burger__p"><a href="section-products.html">Categorias</a></p>
       </div>
       <ul class="burger__ul">
         <li class="burger__li1">
           <a href="#" class="submenu_link">Habitacion</a>
           <ul class="burger__ul2">
-            <li class="burger__li2"><a href="#">Camas</a></li>
-            <li class="burger__li2"><a href="#">Roperos</a></li>
+            <li class="burger__li2">
+              <a
+                class="botonesCATEGORY"
+                href="section-products.html"
+                data-id="sommiers"
+                >Sommiers</a
+              >
+            </li>
+            <li class="burger__li2">
+              <a
+                class="botonesCATEGORY"
+                href="section-products.html"
+                data-id="roperos"
+                >Roperos</a
+              >
+            </li>
           </ul>
         </li>
         <li class="burger__li1">
           <a class="submenu_link" href="#">Interior</a>
           <ul class="burger__ul2">
-            <li class="burger__li2"><a href="#">Sillas</a></li>
-            <li class="burger__li2"><a href="#">Mesas</a></li>
-            <li class="burger__li2"><a href="#">Sofas</a></li>
+            <li class="burger__li2">
+              <a
+                class="botonesCATEGORY"
+                data-id="sillas"
+                href="section-products.html"
+                >Sillas</a
+              >
+            </li>
+            <li class="burger__li2">
+              <a
+                class="botonesCATEGORY"
+                href="section-products.html"
+                data-id="mesas"
+                >Mesas</a
+              >
+            </li>
+            <li class="burger__li2">
+              <a
+                class="botonesCATEGORY"
+                href="section-products.html"
+                data-id="sofas"
+                >Sofas</a
+              >
+            </li>
           </ul>
         </li>
         <li class="burger__li1">
-          <a href="#EXTERIOR" class="submenu_link">Exterior</a>
+          <a href="#" class="submenu_link">Exterior</a>
           <ul class="burger__ul2">
             <li class="burger__li2">
               <a
-                data-category="exterior"
                 id="EXTERIOR"
-                href="./section-products.html"
-                class="submenu_link-exterior"
+                href="section-products.html"
+                data-id="exterior"
+                class="botonesCATEGORY"
                 >Sets Exterior</a
               >
             </li>
@@ -64,7 +102,9 @@
       </div>
       <div class="burger__section burger__section-help">
         <ul class="burger__help-ul">
-          <li><p class="burger__help-p">Medios de Pago</p></li>
+          <li>
+            <a href="pay-metods.html" class="burger__help-p">Medios de Pago</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -136,9 +176,7 @@
         <div class="swiper-pagination"></div>
       </div>
       <section class="section-products">
-        <div class="category-container">
-          <h2>Name Category</h2>
-        </div>
+        <div class="category-container"></div>
         <div class="orderAndFilter">
           <div class="order_div">
             <img src="Icons/order.png" alt="" />
@@ -177,7 +215,7 @@
         <img src="Icons/security.png" alt="" />
       </div>
     </footer>
+
     <script type="module" src="main.js"></script>
-    <script type="module" src="js-products.js"></script>
   </body>
 </html>

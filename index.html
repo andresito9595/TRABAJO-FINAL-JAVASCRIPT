@@ -14,6 +14,7 @@
     <title>Javascript E-commerce</title>
   </head>
   <body>
+    <div id="overlay"></div>
     <!-- burger MENU -->
 
     <div class="burger__div">
@@ -108,6 +109,29 @@
       </div>
     </div>
     <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+
+    <!--'''''''''''''''''''''''''''''''''''''''''''''''' CART ''''''''''''''''''''''''''''''''''''''''''''''''-->
+
+    <div class="cart__div">
+      <div class="product__cart">
+        <img src="Muebles/Sillas/3.webp" alt="" />
+        <p>$1500</p>
+        <div class="cart__qualy">
+          <input class="removeAmount" type="button" />
+          <input class="amount" type="button" value="1" />
+          <input class="addAmount" type="button" />
+        </div>
+        <span class="product__delete"
+          ><img src="Icons/remove-cart.png" alt=""
+        /></span>
+      </div>
+      <div class="cart__Allbtn">
+        <input class="payCart__btn" type="button" value="Pay" />
+        <input class="emptyCart__btn" type="button" value="Empty" />
+      </div>
+    </div>
+
+    <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
     <header>
       <div class="toggle">
         <div class="toggle__div"></div>
@@ -125,7 +149,7 @@
           alt="lupa de busqueda"
         />
 
-        <img src="Icons/cart.svg" alt="carro de compra" />
+        <img class="cart__icon" src="Icons/cart.svg" alt="carro de compra" />
 
         <img src="Icons/favorite.svg" alt="favoritos" />
       </div>

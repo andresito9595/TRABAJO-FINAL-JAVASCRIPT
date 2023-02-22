@@ -31,6 +31,11 @@ const BURGER_MENU = document.querySelector('.burger__div')
 const SUBMENU_BTN = document.querySelectorAll('.submenu_link')
 
 
+/* CART */
+
+const CART_DIV = document.querySelector('.cart__div')
+const CART_ICON = document.querySelector('.cart__icon')
+console.log(CART_DIV, CART_ICON)
 /* PRODUCTS RENDER */
 
 const BOTONES = document.querySelectorAll('.botonesCATEGORY')
@@ -44,6 +49,9 @@ const deployMenu = (e) => {
         BTN_burger.classList.toggle('toggle1')
         BURGER_MENU.classList.toggle('burger__menu-active');
         BODY.classList.toggle('overflow')
+        if (BURGER_MENU.classList.contains('burger__menu-active')) {
+            IMPUT_SEARCH.classList.remove('search_active')
+        }
 
     }
 }
@@ -68,6 +76,9 @@ function deploySubMenu(e) {
 const deploySearch = (e) => {
 
     IMPUT_SEARCH.classList.toggle('search_active')
+    if (IMPUT_SEARCH.classList.contains('search_active')) {
+        BURGER_MENU.classList.remove('burger__menu-active')
+    }
     IMPUT_SEARCH.focus()
     FORM.reset()
 }
@@ -76,15 +87,7 @@ const searching = (e) => {
 
 }
 
-const renderCategory = (e) => {
-    e.preventDefault();
 
-
-    CategoryFilter(categorySelected)
-
-
-
-}
 /* MODIFICAR LOCALSTORAGE CON CATEGORIA NUEVA*/
 
 const linkCategory = (e) => {
@@ -99,14 +102,8 @@ const linkCategory = (e) => {
                 setearLS(arrayCategoria)
 
             }
-
         })
-
     }
-
-
-
-
 }
 
 let contenidoLS = JSON.parse(localStorage.getItem('categoria')) || []
@@ -174,7 +171,7 @@ const renderCardProduct = (array) => {
                   </p>
                   <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
                   <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
-                  <input class="cardProduct__btn-sillas" type="submit" value="COMPRAR" />
+                  <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
                 </div>
                
             `
@@ -184,6 +181,13 @@ const renderCardProduct = (array) => {
     });
 
 }
+/* TOOGLE CART */
+const deployCart = (e) => {
+    CART_DIV.classList.toggle('cart__div-active')
+}
+
+
+/* ------------------ */
 
 const init = () => {
     BOTONES.forEach(e => e.addEventListener('click', linkCategory))
@@ -192,6 +196,7 @@ const init = () => {
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searching);
+    CART_ICON.addEventListener('click', deployCart)
 
 
 

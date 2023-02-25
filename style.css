@@ -15,7 +15,7 @@
 
 #overlay {
   position: fixed; /* Sit on top of the page content */
-  display: block; /* Hidden by default */
+  display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
@@ -70,57 +70,77 @@ body {
   background-color: #d1d1d1;
   color: #020101;
   transition: all 0.2s ease-in-out;
-  top: 80px;
+  top: 81px;
   left: -102%;
   font-weight: 600;
+  border: 5px rgba(16, 11, 11, 0.738) solid;
 }
 .cart__div-active {
   top: 80px;
   left: 0;
-  height: 100%;
 }
 .product__cart {
-  background-color: tomato;
+  background-color: rgb(255, 255, 255);
   display: flex;
 
   align-items: center;
+  justify-content: space-evenly;
 
   width: 100%;
   padding: 20px;
   border: 2px solid rgb(255, 254, 254);
 }
 .product__cart img {
+  width: 20%;
   object-fit: cover;
 }
 .product__cart p {
-  background-color: blue;
-  font-size: 25px;
+  font-size: 17px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .cart__qualy {
-  background-color: blue;
+  text-align: end;
+  width: 25;
+  height: 100%;
 }
 .removeAmount {
+  width: 30px;
+  height: 30px;
 }
 .amount {
+  padding: 5px 15px;
 }
 .addAmount {
+  width: 30px;
+  height: 30px;
 }
-.product__delete {
-  background-color: blue;
-  padding-left: 20px;
-}
+
 .product__delete img {
-  width: 35px;
+  margin-left: 20px;
+  width: 55px;
   object-fit: cover;
 }
 .cart__Allbtn {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-.payCart__btn {
+.cart__btn {
+  margin: 15px;
+  width: 30%;
+  padding: 5px;
+}
+.cart__btn-pay {
+  background-color: lightsalmon;
+  border: none;
+  border-radius: 10px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 2px 2px;
 }
 
-.emptyCart__btn {
+.cart__btn-empty {
+  border: none;
+  border-radius: 10px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 2px 2px;
 }
 /* ------------------- */
 /* ------ ICONS MENU TOOGLE--------- */
@@ -514,48 +534,6 @@ main {
   padding: 5px 10px;
 }
 
-/*  SET EXTERIOR */
-/* 
-.cardProduct__img-Exterior {
-  width: 90%;
-  border-radius: 5px;
-}
-
-.cardProduct__name-Exterior {
-  font-size: 18px;
-  font-weight: 800;
-}
-.cardProduct__details-Exterior {
-  font-size: 15px;
-}
-.cardProduct__cuotas-Exterior {
-  font-size: 15px;
-  font-weight: 800;
-}
-.cardProduct__precioDiscount-Exterior {
-  text-decoration: line-through;
-  font-weight: 600;
-  font-size: 16px;
-}
-.cardProduct__precio-Exterior {
-  font-size: 25px;
-  font-weight: 800;
-  height: 20px;
-  margin: 0;
-}
-.cardProduct__btn-Exterior {
-  border: NONE;
-  width: 150px;
-  height: 35px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 15px;
-  color: wheat;
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 5px 10px;
-}
- */
 /* FOOTER */
 .footer {
   outline: rgb(71, 63, 63) solid 3px;

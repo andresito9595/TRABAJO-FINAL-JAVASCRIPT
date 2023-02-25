@@ -51,6 +51,7 @@ const deployMenu = (e) => {
         BODY.classList.toggle('overflow')
         if (BURGER_MENU.classList.contains('burger__menu-active')) {
             IMPUT_SEARCH.classList.remove('search_active')
+            CART_DIV.classList.remove('cart__div-active')
         }
 
     }
@@ -71,6 +72,16 @@ function deploySubMenu(e) {
         childMenu.style.height = `${height1 * childMenu.children.length * 2}px`
     }
 }
+/* TOOGLE CART */
+const deployCart = (e) => {
+    CART_DIV.classList.toggle('cart__div-active')
+    if (CART_DIV.classList.contains('cart__div-active')) {
+        BURGER_MENU.classList.remove('burger__menu-active');
+        IMPUT_SEARCH.classList.remove('search_active')
+    } else {
+
+    }
+}
 /* SEARCH */
 
 const deploySearch = (e) => {
@@ -78,6 +89,7 @@ const deploySearch = (e) => {
     IMPUT_SEARCH.classList.toggle('search_active')
     if (IMPUT_SEARCH.classList.contains('search_active')) {
         BURGER_MENU.classList.remove('burger__menu-active')
+        CART_DIV.classList.remove('cart__div-active')
     }
     IMPUT_SEARCH.focus()
     FORM.reset()
@@ -181,10 +193,7 @@ const renderCardProduct = (array) => {
     });
 
 }
-/* TOOGLE CART */
-const deployCart = (e) => {
-    CART_DIV.classList.toggle('cart__div-active')
-}
+
 
 
 /* ------------------ */

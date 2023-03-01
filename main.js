@@ -1,5 +1,5 @@
 
-import { sillas, sommiers, exterior, mesas, roperos, sofas } from './PRODUCTS.JS'
+import { stock } from './PRODUCTS.JS'
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
 const swiper = new Swiper('.swiper', {
     // Optional parameters
@@ -15,8 +15,7 @@ const swiper = new Swiper('.swiper', {
     }
 });
 
-const allProducts = [sillas, sommiers, exterior, mesas, roperos, sofas]
-const NAME_CATEGORY_DIV = document.querySelector('.category-container')
+
 
 /* SEARCH */
 const FORM = document.querySelector('form')
@@ -29,17 +28,23 @@ const BODY = document.querySelector('body')
 const BTN_burger = document.querySelector('.toggle')
 const BURGER_MENU = document.querySelector('.burger__div')
 const SUBMENU_BTN = document.querySelectorAll('.submenu_link')
+const OVERLAY = document.querySelector('.overlay')
+const CATEGORY_BTN = document.querySelector('.category_btn')
 
 
 /* CART */
 
-const CART_DIV = document.querySelector('.cart__div')
-const CART_ICON = document.querySelector('.cart__icon')
-console.log(CART_DIV, CART_ICON)
+const CART_DIV = document.querySelector('.cart__div');
+const CART_ICON = document.querySelector('.cart__icon');
+
 /* PRODUCTS RENDER */
 
-const BOTONES = document.querySelectorAll('.botonesCATEGORY')
-const CARD_CONTAINER = document.querySelector('.cardProduct__div')
+const BOTONES = document.querySelectorAll('.botonesCATEGORY') /*  BOTONES MENU HAMBURGUESA FILTRADO */
+const BOTONES_CATEGORY = document.querySelectorAll('.filters_input-category'); /* BOTONES FILTRADO */
+const CARD_CONTAINER = document.querySelector('.cardProduct__div');
+const NAME_CATEGORY_DIV = document.querySelector('.category-container'); /* NOMBRE DE LA CATEGORIA */
+const BOTONES_ORDER = document.querySelectorAll('.filters_input-order') /* BOTONES ORDER */
+
 /* MENU BURGER */
 
 const deployMenu = (e) => {
@@ -52,6 +57,9 @@ const deployMenu = (e) => {
         if (BURGER_MENU.classList.contains('burger__menu-active')) {
             IMPUT_SEARCH.classList.remove('search_active')
             CART_DIV.classList.remove('cart__div-active')
+            OVERLAY.style.display = 'block'
+        } else {
+            OVERLAY.style.display = 'none'
         }
 
     }
@@ -77,8 +85,10 @@ const deployCart = (e) => {
     CART_DIV.classList.toggle('cart__div-active')
     if (CART_DIV.classList.contains('cart__div-active')) {
         BURGER_MENU.classList.remove('burger__menu-active');
-        IMPUT_SEARCH.classList.remove('search_active')
+        IMPUT_SEARCH.classList.remove('search_active');
+        OVERLAY.style.display = 'block'
     } else {
+        OVERLAY.style.display = 'none'
 
     }
 }
@@ -93,120 +103,258 @@ const deploySearch = (e) => {
     }
     IMPUT_SEARCH.focus()
     FORM.reset()
+
 }
 
 const searching = (e) => {
 
-}
-
-
-/* MODIFICAR LOCALSTORAGE CON CATEGORIA NUEVA*/
-
-const linkCategory = (e) => {
-
-    let categoria_id = e.target.dataset.id;
-    let arrayCategoria = []
-    for (let i = 0; i <= allProducts.length - 1; i++) {
-
-        allProducts[i].forEach(element => {
-            if (element.category === categoria_id) {
-                arrayCategoria.push(element)
-                setearLS(arrayCategoria)
-
-            }
-        })
-    }
-}
-
-let contenidoLS = JSON.parse(localStorage.getItem('categoria')) || []
-/* SETEAR LS */
-const setearLS = (categoria) => {
-
-
-
-    if (contenidoLS.length === 0 || contenidoLS === null) {
-        console.log('seteando todos los productos')
-        localStorage.setItem('categoria', JSON.stringify(allProducts))
-    } else {
-        console.log('seteando la categoria elegida')
-        localStorage.setItem('categoria', JSON.stringify(categoria))
+    const fitroCategoria = () => {
 
     }
 
 }
 
 
-/* setear LS y Enviar Categorias Seleccionadas*/
-const iniciarCategorias = () => {
-
-    setearLS(contenidoLS)
-
-    const categorySelected = [JSON.parse(localStorage.getItem('categoria'))]
-
-    renderCardProduct(categorySelected)
-
-}
 
 
 /* RENDERIZADO PRODUCTOS */
+const renderCardProduct = (categoria) => {
+    console.log(categoria)
+    console.log(stock.some(e => e.category === categoria))
+    if (categoria === 'allProducts') {
+        console.log('primer if todos')
+        stock.forEach(e => {
 
-const renderCardProduct = (array) => {
-    array.forEach(e => {
+            const { name, description, price_normal, discount, img, category } = e;
+            const precioDiscount = price_normal - (price_normal * (discount / 100))
+            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
 
-        for (let i = 0; i <= e.length - 1; i++) {
+            CARD_CONTAINER.innerHTML += `
+                <div class="cardProduct__card">
+                      <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                      <div class="contains_img">
+                      <img
+                      class="cardProduct__img-sillas"
+                      src="${img}"
+                      alt=""
+                    /></div>
+                      
+                      <p class="cardProduct__name-sillas">${name}</p>
+                      <p class="cardProduct__details-sillas">
+                      ${description}
+                      </p>
+                      <p class="cardProduct__cuotas-sillas">
+                        12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
+                      </p>
+                      <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
+                      <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
+                      <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                    </div>
+                   
+                `
+
+        })
+
+    } else if (order === 'mayor' || order === 'menor') {
+        console.log('psegundo if getorderarray')
+        console.log(getLSOrderArray)
+        getLSOrderArray.forEach(e => {
+
+            const { name, description, price_normal, discount, img, category } = e;
+            const precioDiscount = price_normal - (price_normal * (discount / 100))
+            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
+
+            CARD_CONTAINER.innerHTML += `
+                <div class="cardProduct__card">
+                      <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                      <div class="contains_img">
+                      <img
+                      class="cardProduct__img-sillas"
+                      src="${img}"
+                      alt=""
+                    /></div>
+                      
+                      <p class="cardProduct__name-sillas">${name}</p>
+                      <p class="cardProduct__details-sillas">
+                      ${description}
+                      </p>
+                      <p class="cardProduct__cuotas-sillas">
+                        12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
+                      </p>
+                      <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
+                      <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
+                      <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                    </div>
+                   
+                `
+
+        })
+
+    } else if (stock.some(e => e.category === categoria)) {
+        const productsFilters = stock.filter(e => e.category === categoria)
+        productsFilters.forEach(e => {
 
 
-            const { name, description, price_normal, discount, img, category } = e[i];
+            const { name, description, price_normal, discount, img, category } = e;
+            const precioDiscount = price_normal - (price_normal * (discount / 100))
 
             NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
 
+            CARD_CONTAINER.innerHTML += `
+                 <div class="cardProduct__card">
+                       <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                       <div class="contains_img">
+                       <img
+                       class="cardProduct__img-sillas"
+                       src="${img}"
+                       alt=""
+                     /></div>
+                       
+                       <p class="cardProduct__name-sillas">${name}</p>
+                       <p class="cardProduct__details-sillas">
+                       ${description}
+                       </p>
+                       <p class="cardProduct__cuotas-sillas">
+                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
+                       </p>
+                       <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
+                       <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
+                       <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                     </div>
+                    
+                 `
+        })
+    } else {
+        categoria.forEach(e => {
 
+            const { name, description, price_normal, discount, img, category } = e;
             const precioDiscount = price_normal - (price_normal * (discount / 100))
-
+            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
 
             CARD_CONTAINER.innerHTML += `
-            <div class="cardProduct__card">
-                  <div class="discount-sillas"><p>${discount}%OFF</p></div>
-                  <div class="contains_img">
-                  <img
-                  class="cardProduct__img-sillas"
-                  src="${img}"
-                  alt=""
-                /></div>
-                  
-                  <p class="cardProduct__name-sillas">${name}</p>
-                  <p class="cardProduct__details-sillas">
-                  ${description}
-                  </p>
-                  <p class="cardProduct__cuotas-sillas">
-                    12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
-                  </p>
-                  <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
-                  <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
-                  <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
-                </div>
-               
-            `
+                <div class="cardProduct__card">
+                      <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                      <div class="contains_img">
+                      <img
+                      class="cardProduct__img-sillas"
+                      src="${img}"
+                      alt=""
+                    /></div>
+                      
+                      <p class="cardProduct__name-sillas">${name}</p>
+                      <p class="cardProduct__details-sillas">
+                      ${description}
+                      </p>
+                      <p class="cardProduct__cuotas-sillas">
+                        12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
+                      </p>
+                      <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
+                      <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
+                      <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                    </div>
+                   
+                `
 
-        }
-
-    });
+        })
+    }
 
 }
+
+const getLS = JSON.parse(localStorage.getItem('categoria'))
+const getLSOrderArray = JSON.parse(localStorage.getItem('orderedArray'))
+const order = JSON.parse(localStorage.getItem('order'))
+
+
+const setearLS = (parametro) => {
+    localStorage.setItem('categoria', JSON.stringify(parametro))
+}
+/*  SELECCIONAR CATEGORIA */
+
+const selectCategory = (e) => {
+
+
+    let buttonCategory = e.target.dataset.id;
+    setearLS(buttonCategory)
+    renderCardProduct(buttonCategory)
+
+}
+const reset = true
+/* RELAOD PAGE PRODUCT SECCTION */
+const iniciarCategorias = () => {
+    if (getLS === 'allProducts') {
+        setearLS('allProducts')
+        renderCardProduct(getLS)
+        return
+    }
+    if (order) {
+        console.log('voy por aqui')
+        renderCardProduct(getLSOrderArray)
+    }
+    else {
+        renderCardProduct(getLS)
+    }
+
+}
+/* BUTTONS FILTERS */
+const buttonsFilters = (e) => {
+
+
+    localStorage.removeItem('order')
+    selectCategory(e)
+    location.reload()
+}
+/* FUNCTION ORDER */
+
+const orderProducts = (e) => {
+
+    let pulsedBtn = e.target.dataset.id
+    if (pulsedBtn === 'mayor') {
+
+        const arrayProductosOrdenados = stock.filter(e => e.category === getLS).sort((a, b) => {
+            return (b.price_normal - (b.price_normal * (b.discount / 100))) - (a.price_normal - (a.price_normal * (a.discount / 100)))
+
+        })
+        localStorage.setItem('order', JSON.stringify('mayor'))
+
+        localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
+        location.reload()
+
+
+    } else {
+
+        const arrayProductosOrdenados = stock.filter(e => e.category === getLS).sort((a, b) => {
+            return (a.price_normal - (a.price_normal * (a.discount / 100))) - (b.price_normal - (b.price_normal * (b.discount / 100)))
+        })
+        localStorage.setItem('order', JSON.stringify('menor'))
+
+        localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
+        location.reload()
+
+
+    }
+}
+
+
+
+
 
 
 
 /* ------------------ */
 
+
+
 const init = () => {
-    BOTONES.forEach(e => e.addEventListener('click', linkCategory))
-    window.addEventListener('DOMContentLoaded', iniciarCategorias)
+    BOTONES.forEach(e => e.addEventListener('click', selectCategory))
+    BOTONES_CATEGORY.forEach(e => e.addEventListener('click', buttonsFilters))
+    BOTONES_ORDER.forEach(e => e.addEventListener('click', orderProducts))
+    CATEGORY_BTN.addEventListener('click', selectCategory)
+    window.addEventListener('load', iniciarCategorias)
     BTN_burger.addEventListener('click', deployMenu);
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searching);
-    CART_ICON.addEventListener('click', deployCart)
-
+    CART_ICON.addEventListener('click', deployCart);
 
 
 }
@@ -221,7 +369,18 @@ init();
 
 
 
-
+/*  <div class="product__cart">
+        <img src="Muebles/Sillas/3.webp" alt="" />
+        <p>$1500</p>
+        <div class="cart__qualy">
+          <input class="removeAmount" type="button" value="-" />
+          <input class="amount" type="button" value="1" />
+          <input class="addAmount" type="button" "button" value="+"/>
+        </div>
+        <span class="product__delete"
+          ><img src="Icons/remove-cart.png" alt=""
+        /></span>
+      </div>  */
 
 
 

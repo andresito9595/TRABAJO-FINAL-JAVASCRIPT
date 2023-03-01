@@ -16,7 +16,7 @@
 
   <body>
     <!-- burger MENU -->
-
+    <div class="overlay"></div>
     <div class="burger__div">
       <div class="burger__section burger__section-login">
         <a href="index.html">Home</a>
@@ -26,7 +26,14 @@
       </div>
 
       <div class="burger__section burger__section-categorias">
-        <p class="burger__p"><a href="section-products.html">Categorias</a></p>
+        <p class="burger__p">
+          <a
+            data-id="allProducts"
+            class="category_btn"
+            href="section-products.html"
+            >Categorias</a
+          >
+        </p>
       </div>
       <ul class="burger__ul">
         <li class="burger__li1">
@@ -73,7 +80,7 @@
               <a
                 class="botonesCATEGORY"
                 href="section-products.html"
-                data-id="sofas"
+                data-id="todos"
                 >Sofas</a
               >
             </li>
@@ -109,6 +116,18 @@
       </div>
     </div>
     <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+    <!--'''''''''''''''''''''''''''''''''''''''''''''''' CART ''''''''''''''''''''''''''''''''''''''''''''''''-->
+
+    <div class="cart__div">
+      <div class="noProductsText"><p>No se han agregado productos</p></div>
+
+      <div class="cart__Allbtn">
+        <input class="cart__btn cart__btn-pay" type="button" value="Pay" />
+      </div>
+    </div>
+
+    <!-- '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' -->
+
     <header>
       <div class="toggle">
         <div class="toggle__div"></div>
@@ -126,8 +145,7 @@
           alt="lupa de busqueda"
         />
 
-        <img src="Icons/cart.svg" alt="carro de compra" />
-
+        <img class="cart__icon" src="Icons/cart.svg" alt="carro de compra" />
         <img src="Icons/favorite.svg" alt="favoritos" />
       </div>
     </header>
@@ -177,14 +195,98 @@
       </div>
       <section class="section-products">
         <div class="category-container"></div>
+        <div class="category">
+          <img src="Icons/categoria.png" alt="" />
+          <p class="category_p">Categorias</p>
+          <div class="filters">
+            <input
+              class="filters_input filters_input-category"
+              type="button"
+              value="Mesas"
+              data-id="mesas"
+            />
+            <input
+              class="filters_input filters_input-category"
+              type="button"
+              data-id="sillas"
+              value="Sillas"
+            />
+            <input
+              class="filters_input filters_input-category"
+              type="button"
+              data-id="sofas"
+              value="Sofas"
+            />
+            <input
+              class="filters_input filters_input-category"
+              type="button"
+              data-id="roperos"
+              value="Roperos"
+            />
+            <input
+              class="filters_input filters_input-category"
+              type="button"
+              data-id="sommiers"
+              value="Sommiers"
+            />
+            <input
+              class="filters_input filters_input-category"
+              type="button"
+              data-id="exterior"
+              value="Exterior"
+            />
+          </div>
+        </div>
         <div class="orderAndFilter">
-          <div class="order_div">
+          <div class="category">
             <img src="Icons/order.png" alt="" />
             <p class="order_p">Order</p>
+            <div class="filters">
+              <input
+                data-id="mayor"
+                class="filters_input filters_input-order"
+                type="button"
+                value="Mayor Precio"
+              />
+              <input
+                data-id="menor"
+                class="filters_input filters_input-order"
+                type="button"
+                value="Menor Precio"
+              />
+            </div>
           </div>
-          <div class="filter_div">
+
+          <div class="category">
             <img src="Icons/filter.png" alt="" />
             <p class="filter_p">Filter</p>
+            <div class="filters">
+              <input
+                class="filters_input filters_input-material"
+                type="button"
+                value="Madera"
+              />
+              <input
+                class="filters_input filters_input-material"
+                type="button"
+                value="Aluminio"
+              />
+              <input
+                class="filters_input filters_input-material"
+                type="button"
+                value="Metal"
+              />
+              <input
+                class="filters_input filters_input-material"
+                type="button"
+                value="Eco-cuero"
+              />
+              <input
+                class="filters_input filters_input-material"
+                type="button"
+                value="Cuerina"
+              />
+            </div>
           </div>
         </div>
       </section>

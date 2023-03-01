@@ -10,7 +10,7 @@
 }, */
 
 
-export const sillas = [{
+export const stock = [{
     name: 'Silla Escritorio',
     description: 'Silla de escritorio blanca de Aluminio',
     material: 'Aluminio y Cuerina',
@@ -18,7 +18,7 @@ export const sillas = [{
     discount: '12',
     img: '././Muebles/Sillas/1.jpg',
     category: 'sillas',
-    id: 1
+    id: 1,
 
 }, {
     name: 'Silla Eco-Cuero',
@@ -75,9 +75,9 @@ export const sillas = [{
     id: 6
 
 },
-]
 
-export const sommiers = [{
+
+{
     name: 'Sommier Piero 2 plazas',
     description: 'Sommier 2 plazas base Madera',
     material: 'Colchon resortes y base de madera',
@@ -114,10 +114,10 @@ export const sommiers = [{
     img: './Muebles/Sommiers/4.jpg',
     category: 'sommiers',
     id: 4
-},]
+},
 
 
-export const exterior = [{
+{
     name: 'Set Mesa y Sillas Plasticos ',
     description: ' Mesa 1,8M X 0.7M y Sillas Plastico Negro con relieve ',
     material: 'Plastico de alta resistencia',
@@ -164,9 +164,9 @@ export const exterior = [{
     img: './Muebles/Exterior/5.webp',
     category: 'exterior',
     id: 5
-},]
+},
 
-export const mesas = [{
+{
     name: 'Mesa Simil Madera ',
     description: 'Mesa extremos de Aluminio Centro Madera Patas Aluminio 1.8M X 0.8M',
     material: 'Madera y Aluminio',
@@ -212,9 +212,9 @@ export const mesas = [{
     img: './Muebles/Mesas/5.jpg',
     category: 'mesas',
     id: 5
-},]
+},
 
-export const roperos = [{
+{
     name: 'Ropero Suix Melamina',
     description: 'Ropero 2M X 2,5M',
     material: 'Melamina',
@@ -260,9 +260,9 @@ export const roperos = [{
     img: './Muebles/Roperos/5.jpg',
     category: 'roperos',
     id: 5
-},]
+},
 
-export const sofas = [{
+{
     name: 'Sofa Gris',
     description: 'Sofa 2 cuerpo Gris  2M X 0.7M',
     material: 'Madera y Chenille',
@@ -312,4 +312,4 @@ export const sofas = [{
     img: './Muebles/Sofas/5.jpg',
     category: 'sofas',
     id: 5
-},]
+}]

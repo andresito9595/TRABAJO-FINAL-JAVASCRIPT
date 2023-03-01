@@ -14,7 +14,7 @@
     <title>Javascript E-commerce</title>
   </head>
   <body>
-    <div id="overlay"></div>
+    <div class="overlay"></div>
     <!-- burger MENU -->
 
     <div class="burger__div">
@@ -26,7 +26,14 @@
       </div>
 
       <div class="burger__section burger__section-categorias">
-        <p class="burger__p"><a href="section-products.html">Categorias</a></p>
+        <p class="burger__p">
+          <a
+            data-id="allProducts"
+            class="category_btn"
+            href="section-products.html"
+            >Categorias</a
+          >
+        </p>
       </div>
       <ul class="burger__ul">
         <li class="burger__li1">
@@ -113,21 +120,10 @@
     <!--'''''''''''''''''''''''''''''''''''''''''''''''' CART ''''''''''''''''''''''''''''''''''''''''''''''''-->
 
     <div class="cart__div">
-      <div class="product__cart">
-        <img src="Muebles/Sillas/3.webp" alt="" />
-        <p>$1500</p>
-        <div class="cart__qualy">
-          <input class="removeAmount" type="button" value="-" />
-          <input class="amount" type="button" value="1" />
-          <input class="addAmount" type="button" "button" value="+"/>
-        </div>
-        <span class="product__delete"
-          ><img src="Icons/remove-cart.png" alt=""
-        /></span>
-      </div>
+      <div class="noProductsText"><p>No se han agregado productos</p></div>
+
       <div class="cart__Allbtn">
         <input class="cart__btn cart__btn-pay" type="button" value="Pay" />
-        <input class="cart__btn cart__btn-empty" type="button" value="Empty" />
       </div>
     </div>
 

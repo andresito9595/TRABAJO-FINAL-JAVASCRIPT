@@ -28,19 +28,52 @@
   padding: 6px;
   text-align: center;
 }
-.orderAndFilter div {
+/* .orderAndFilter div {
   width: 40%;
-  outline: 2px solid rgb(153, 144, 144);
+
   display: flex;
   padding: 5px 20px;
   cursor: pointer;
   border-radius: 20px;
   border-bottom: 2px solid black;
-}
+} */
 .orderAndFilter img {
   width: 30px;
 }
-.order_div {
+
+.category {
+  position: relative;
+
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 7px 25px;
+  cursor: pointer;
+  border-radius: 20px;
+  border-bottom: 2px solid black;
+  background-color: rgb(231, 195, 175);
+  margin: 10px;
 }
-.filter_div {
+.category img {
+  width: 30px;
+}
+.category p {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8x;
+  text-align: center;
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+
+  margin-top: 40px;
+  position: absolute;
+  z-index: 500;
+}
+.filters_input {
+  padding: 6px;
 }

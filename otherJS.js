@@ -29,7 +29,7 @@ const BTN_burger = document.querySelector('.toggle')
 const BURGER_MENU = document.querySelector('.burger__div')
 const SUBMENU_BTN = document.querySelectorAll('.submenu_link')
 const OVERLAY = document.querySelector('.overlay')
-const CATEGORY = document.querySelector('.category_btn')
+const CATEGORY_BTN = document.querySelector('.category_btn')
 
 
 /* CART */
@@ -44,14 +44,6 @@ const BOTONES_CATEGORY = document.querySelectorAll('.filters_input-category'); /
 const CARD_CONTAINER = document.querySelector('.cardProduct__div');
 const NAME_CATEGORY_DIV = document.querySelector('.category-container'); /* NOMBRE DE LA CATEGORIA */
 const BOTONES_ORDER = document.querySelectorAll('.filters_input-order') /* BOTONES ORDER */
-
-/* ORDER AND FILTERS BTN */
-
-const FILTERS_BTN = document.querySelector('.filtersBtn')
-const ORDER_BTN = document.querySelector('.orderBtn')
-const CATEGORY_BTN = document.querySelector('.categoryBtn')
-
-
 
 /* MENU BURGER */
 
@@ -77,7 +69,8 @@ function deploySubMenu(e) {
 
     const childMenu = this.nextElementSibling
     const height1 = childMenu.scrollHeight
-
+    console.log(childMenu.children.length)
+    console.log(height1)
 
     if (childMenu.classList.contains('desplegar')) {
         childMenu.classList.remove('desplegar')
@@ -126,9 +119,10 @@ const searching = (e) => {
 
 /* RENDERIZADO PRODUCTOS */
 const renderCardProduct = (categoria) => {
-
+    console.log(categoria)
+    console.log(stock.some(e => e.category === categoria))
     if (categoria === 'allProducts') {
-
+        console.log('primer if todos')
         stock.forEach(e => {
 
             const { name, description, price_normal, discount, img, category } = e;
@@ -162,7 +156,8 @@ const renderCardProduct = (categoria) => {
         })
 
     } else if (order === 'mayor' || order === 'menor') {
-
+        console.log('psegundo if getorderarray')
+        console.log(getLSOrderArray)
         getLSOrderArray.forEach(e => {
 
             const { name, description, price_normal, discount, img, category } = e;
@@ -265,33 +260,6 @@ const renderCardProduct = (categoria) => {
 
 }
 
-
-/* FUNCION PARA ORDENAR ITEMS*/
-
-
-const ordenarItems = (pulsedBtn) => {
-    if (pulsedBtn === 'menor') {
-
-        const arrayProductosOrdenados = stock.sort((a, b) => {
-            return (a.price_normal - (a.price_normal * (a.discount / 100))) - (b.price_normal - (b.price_normal * (b.discount / 100)))
-        })
-
-
-        localStorage.setItem('order', JSON.stringify('menor'))
-
-        localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
-        location.reload()
-    } else if (pulsedBtn === 'mayor') {
-        console.log('enter donde quiero')
-        const arrayProductosOrdenados = stock.sort((a, b) => {
-            return (b.price_normal - (b.price_normal * (b.discount / 100))) - (a.price_normal - (a.price_normal * (a.discount / 100)))
-        })
-        localStorage.setItem('order', JSON.stringify('mayor'))
-        localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
-        location.reload()
-    }
-}
-/* LOCAL STORAGE CONFIG */
 const getLS = JSON.parse(localStorage.getItem('categoria'))
 const getLSOrderArray = JSON.parse(localStorage.getItem('orderedArray'))
 const order = JSON.parse(localStorage.getItem('order'))
@@ -304,25 +272,24 @@ const setearLS = (parametro) => {
 
 const selectCategory = (e) => {
 
-    localStorage.removeItem('order')
+
     let buttonCategory = e.target.dataset.id;
     setearLS(buttonCategory)
     renderCardProduct(buttonCategory)
 
 }
-
+const reset = true
 /* RELAOD PAGE PRODUCT SECCTION */
 const iniciarCategorias = () => {
-    if (getLS === 'allProducts' && order) {
-        console.log('primero')
-        renderCardProduct(getLSOrderArray)
-    }
-    else if (getLS === 'allProducts') {
+    if (getLS === 'allProducts') {
         setearLS('allProducts')
         renderCardProduct(getLS)
-
+        return
     }
-
+    if (order) {
+        console.log('voy por aqui')
+        renderCardProduct(getLSOrderArray)
+    }
     else {
         renderCardProduct(getLS)
     }
@@ -341,20 +308,8 @@ const buttonsFilters = (e) => {
 const orderProducts = (e) => {
 
     let pulsedBtn = e.target.dataset.id
-    console.log(pulsedBtn)
-    if (getLS === 'allProducts') {
+    if (pulsedBtn === 'mayor') {
 
-        if (order === null) {
-
-            ordenarItems(pulsedBtn)
-
-
-        } else if (order !== null) {
-            ordenarItems(pulsedBtn)
-        }
-    }
-    else if (pulsedBtn === 'mayor') {
-        console.group('ENTRA?????')
         const arrayProductosOrdenados = stock.filter(e => e.category === getLS).sort((a, b) => {
             return (b.price_normal - (b.price_normal * (b.discount / 100))) - (a.price_normal - (a.price_normal * (a.discount / 100)))
 
@@ -365,7 +320,7 @@ const orderProducts = (e) => {
         location.reload()
 
 
-    } else if (pulsedBtn === 'menor') {
+    } else {
 
         const arrayProductosOrdenados = stock.filter(e => e.category === getLS).sort((a, b) => {
             return (a.price_normal - (a.price_normal * (a.discount / 100))) - (b.price_normal - (b.price_normal * (b.discount / 100)))
@@ -374,48 +329,14 @@ const orderProducts = (e) => {
 
         localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
         location.reload()
-    }
 
-}
-/* FUNCION PARA ABRIR OrderBtn */
-const openOrder = (e) => {
 
-    if (e.target.matches('.orderBtn *') || e.target.matches('.orderBtn')) {
-        ORDER_BTN.lastElementChild.classList.toggle('menu_active')
-        if (ORDER_BTN.lastElementChild.classList.contains('menu_active')) {
-            CATEGORY_BTN.lastElementChild.classList.remove('menu_active')
-            FILTERS_BTN.lastElementChild.classList.remove('menu_active')
-        }
     }
 }
 
 
-/* FUNCION PARA ABRIR CategoryBtn */
-
-const openCategorys = (e) => {
-    if (e.target.matches('.categoryBtn *') || e.target.matches('.category')) {
-        CATEGORY_BTN.lastElementChild.classList.toggle('menu_active')
-    }
-    if (CATEGORY_BTN.lastElementChild.classList.contains('menu_active')) {
-        FILTERS_BTN.lastElementChild.classList.remove('menu_active')
-        ORDER_BTN.lastElementChild.classList.remove('menu_active')
-    }
-}
 
 
-/* FUNCION PARA ABRIR FilterBtn */
-
-const openFilters = (e) => {
-
-    if (e.target.matches('.filtersBtn *') || e.target.matches('.filtersBtn')) {
-        FILTERS_BTN.lastElementChild.classList.toggle('menu_active')
-    }
-    if (FILTERS_BTN.lastElementChild.classList.contains('menu_active')) {
-        CATEGORY_BTN.lastElementChild.classList.remove('menu_active')
-        ORDER_BTN.lastElementChild.classList.remove('menu_active')
-    }
-
-}
 
 
 
@@ -427,21 +348,39 @@ const init = () => {
     BOTONES.forEach(e => e.addEventListener('click', selectCategory))
     BOTONES_CATEGORY.forEach(e => e.addEventListener('click', buttonsFilters))
     BOTONES_ORDER.forEach(e => e.addEventListener('click', orderProducts))
-    CATEGORY.addEventListener('click', selectCategory)
-    window.addEventListener('load', iniciarCategorias)
+
+
     BTN_burger.addEventListener('click', deployMenu);
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searching);
     CART_ICON.addEventListener('click', deployCart);
-    FILTERS_BTN.addEventListener('click', openFilters)
-    ORDER_BTN.addEventListener('click', openOrder)
-    CATEGORY_BTN.addEventListener('click', openCategorys)
+
 
 }
 
 
-init()
+init();
+
+
+
+
+
+
+
+
+/*  <div class="product__cart">
+        <img src="Muebles/Sillas/3.webp" alt="" />
+        <p>$1500</p>
+        <div class="cart__qualy">
+          <input class="removeAmount" type="button" value="-" />
+          <input class="amount" type="button" value="1" />
+          <input class="addAmount" type="button" "button" value="+"/>
+        </div>
+        <span class="product__delete"
+          ><img src="Icons/remove-cart.png" alt=""
+        /></span>
+      </div>  */
 
 
 

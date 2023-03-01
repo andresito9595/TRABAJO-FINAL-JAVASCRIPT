@@ -43,7 +43,6 @@
 
 .category {
   position: relative;
-
   width: 50%;
   display: flex;
   align-items: center;
@@ -66,14 +65,18 @@
   text-align: center;
 }
 .filters {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 80%;
 
-  margin-top: 40px;
   position: absolute;
+  top: 150%;
   z-index: 500;
 }
 .filters_input {
   padding: 6px;
+}
+
+.menu_active {
+  display: flex;
 }

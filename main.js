@@ -36,6 +36,7 @@ const CATEGORY = document.querySelector('.category_btn')
 
 const CART_DIV = document.querySelector('.cart__div');
 const CART_ICON = document.querySelector('.cart__icon');
+const ADDCART_BTN = document.querySelectorAll('.cardProduct__btn')
 
 /* PRODUCTS RENDER */
 
@@ -94,10 +95,13 @@ const deployCart = (e) => {
         BURGER_MENU.classList.remove('burger__menu-active');
         IMPUT_SEARCH.classList.remove('search_active');
         OVERLAY.style.display = 'block'
+        BODY.addEventListener('click', closeCart)
     } else {
         OVERLAY.style.display = 'none'
 
     }
+
+
 }
 /* SEARCH */
 
@@ -133,28 +137,28 @@ const renderCardProduct = (categoria) => {
 
             const { name, description, price_normal, discount, img, category } = e;
             const precioDiscount = price_normal - (price_normal * (discount / 100))
-            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
+            NAME_CATEGORY_DIV.innerHTML = `<h2>Todos</h2>`;
 
             CARD_CONTAINER.innerHTML += `
                 <div class="cardProduct__card">
-                      <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                      <div class="discount"><p>${discount}%OFF</p></div>
                       <div class="contains_img">
                       <img
-                      class="cardProduct__img-sillas"
+                      class="discountcardProduct__img"
                       src="${img}"
                       alt=""
                     /></div>
                       
-                      <p class="cardProduct__name-sillas">${name}</p>
-                      <p class="cardProduct__details-sillas">
+                      <p class="cardProduct__name">${name}</p>
+                      <p class="cardProduct__details">
                       ${description}
                       </p>
-                      <p class="cardProduct__cuotas-sillas">
+                      <p class="cardProduct__cuotas">
                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                       </p>
-                      <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
-                      <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
-                      <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                      <p class="cardProduct__preciodiscount">${price_normal}</p>
+                      <p class="cardProduct__precio">$${precioDiscount}</p>
+                      <input class="cardProduct__btn" type="submit" value="ADD CART" />
                     </div>
                    
                 `
@@ -171,24 +175,24 @@ const renderCardProduct = (categoria) => {
 
             CARD_CONTAINER.innerHTML += `
                 <div class="cardProduct__card">
-                      <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                      <div class="discount"><p>${discount}%OFF</p></div>
                       <div class="contains_img">
                       <img
-                      class="cardProduct__img-sillas"
+                      class="discountcardProduct__img"
                       src="${img}"
                       alt=""
                     /></div>
                       
-                      <p class="cardProduct__name-sillas">${name}</p>
-                      <p class="cardProduct__details-sillas">
+                      <p class="cardProduct__name">${name}</p>
+                      <p class="cardProduct__details">
                       ${description}
                       </p>
-                      <p class="cardProduct__cuotas-sillas">
+                      <p class="cardProduct__cuotas">
                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                       </p>
-                      <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
-                      <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
-                      <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                      <p class="cardProduct__preciodiscount">${price_normal}</p>
+                      <p class="cardProduct__precio">$${precioDiscount}</p>
+                      <input class="cardProduct__btn" type="submit" value="ADD CART" />
                     </div>
                    
                 `
@@ -207,24 +211,24 @@ const renderCardProduct = (categoria) => {
 
             CARD_CONTAINER.innerHTML += `
                  <div class="cardProduct__card">
-                       <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                       <div class="discount"><p>${discount}%OFF</p></div>
                        <div class="contains_img">
                        <img
-                       class="cardProduct__img-sillas"
+                       class="discountcardProduct__img"
                        src="${img}"
                        alt=""
                      /></div>
                        
-                       <p class="cardProduct__name-sillas">${name}</p>
-                       <p class="cardProduct__details-sillas">
+                       <p class="cardProduct__name">${name}</p>
+                       <p class="cardProduct__details">
                        ${description}
                        </p>
-                       <p class="cardProduct__cuotas-sillas">
+                       <p class="cardProduct__cuotas">
                          12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                        </p>
-                       <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
-                       <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
-                       <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                       <p class="cardProduct__preciodiscount">${price_normal}</p>
+                       <p class="cardProduct__precio">$${precioDiscount}</p>
+                       <input class="cardProduct__btn" type="submit" value="ADD CART" />
                      </div>
                     
                  `
@@ -238,24 +242,24 @@ const renderCardProduct = (categoria) => {
 
             CARD_CONTAINER.innerHTML += `
                 <div class="cardProduct__card">
-                      <div class="discount-sillas"><p>${discount}%OFF</p></div>
+                      <div class="discount"><p>${discount}%OFF</p></div>
                       <div class="contains_img">
                       <img
-                      class="cardProduct__img-sillas"
+                      class="discountcardProduct__img"
                       src="${img}"
                       alt=""
                     /></div>
                       
-                      <p class="cardProduct__name-sillas">${name}</p>
-                      <p class="cardProduct__details-sillas">
+                      <p class="cardProduct__name">${name}</p>
+                      <p class="cardProduct__details">
                       ${description}
                       </p>
-                      <p class="cardProduct__cuotas-sillas">
+                      <p class="cardProduct__cuotas">
                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                       </p>
-                      <p class="cardProduct__precioDiscount-sillas">${price_normal}</p>
-                      <p class="cardProduct__precio-sillas">$${precioDiscount}</p>
-                      <input class="cardProduct__btn-sillas" type="submit" value="ADD CART" />
+                      <p class="cardProduct__preciodiscount">${price_normal}</p>
+                      <p class="cardProduct__precio">$${precioDiscount}</p>
+                      <input class="cardProduct__btn" type="submit" value="ADD CART" />
                     </div>
                    
                 `
@@ -314,7 +318,7 @@ const selectCategory = (e) => {
 /* RELAOD PAGE PRODUCT SECCTION */
 const iniciarCategorias = () => {
     if (getLS === 'allProducts' && order) {
-        console.log('primero')
+
         renderCardProduct(getLSOrderArray)
     }
     else if (getLS === 'allProducts') {
@@ -341,7 +345,7 @@ const buttonsFilters = (e) => {
 const orderProducts = (e) => {
 
     let pulsedBtn = e.target.dataset.id
-    console.log(pulsedBtn)
+
     if (getLS === 'allProducts') {
 
         if (order === null) {
@@ -354,13 +358,12 @@ const orderProducts = (e) => {
         }
     }
     else if (pulsedBtn === 'mayor') {
-        console.group('ENTRA?????')
+
         const arrayProductosOrdenados = stock.filter(e => e.category === getLS).sort((a, b) => {
             return (b.price_normal - (b.price_normal * (b.discount / 100))) - (a.price_normal - (a.price_normal * (a.discount / 100)))
 
         })
         localStorage.setItem('order', JSON.stringify('mayor'))
-
         localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
         location.reload()
 
@@ -371,7 +374,6 @@ const orderProducts = (e) => {
             return (a.price_normal - (a.price_normal * (a.discount / 100))) - (b.price_normal - (b.price_normal * (b.discount / 100)))
         })
         localStorage.setItem('order', JSON.stringify('menor'))
-
         localStorage.setItem('orderedArray', JSON.stringify(arrayProductosOrdenados))
         location.reload()
     }
@@ -384,7 +386,7 @@ const openOrder = (e) => {
         ORDER_BTN.lastElementChild.classList.toggle('menu_active')
         if (ORDER_BTN.lastElementChild.classList.contains('menu_active')) {
             CATEGORY_BTN.lastElementChild.classList.remove('menu_active')
-            FILTERS_BTN.lastElementChild.classList.remove('menu_active')
+
         }
     }
 }
@@ -397,24 +399,22 @@ const openCategorys = (e) => {
         CATEGORY_BTN.lastElementChild.classList.toggle('menu_active')
     }
     if (CATEGORY_BTN.lastElementChild.classList.contains('menu_active')) {
-        FILTERS_BTN.lastElementChild.classList.remove('menu_active')
+
         ORDER_BTN.lastElementChild.classList.remove('menu_active')
     }
 }
 
 
-/* FUNCION PARA ABRIR FilterBtn */
+/* FUNCION PARA CERRAR CART */
 
-const openFilters = (e) => {
-
-    if (e.target.matches('.filtersBtn *') || e.target.matches('.filtersBtn')) {
-        FILTERS_BTN.lastElementChild.classList.toggle('menu_active')
+const closeCart = (e) => {
+    if (CART_DIV.classList.contains('cart__div-active')) {
+        if (e.target === OVERLAY) {
+            console.log('aca')
+            CART_DIV.classList.remove('cart__div-active')
+            OVERLAY.style.display = 'none'
+        }
     }
-    if (FILTERS_BTN.lastElementChild.classList.contains('menu_active')) {
-        CATEGORY_BTN.lastElementChild.classList.remove('menu_active')
-        ORDER_BTN.lastElementChild.classList.remove('menu_active')
-    }
-
 }
 
 
@@ -434,7 +434,6 @@ const init = () => {
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searching);
     CART_ICON.addEventListener('click', deployCart);
-    FILTERS_BTN.addEventListener('click', openFilters)
     ORDER_BTN.addEventListener('click', openOrder)
     CATEGORY_BTN.addEventListener('click', openCategorys)
 

@@ -117,7 +117,7 @@ const deploySearch = (e) => {
 
 }
 
-const searching = (e) => {
+const searchingProduct = (e) => {
 
     const fitroCategoria = () => {
 
@@ -125,8 +125,40 @@ const searching = (e) => {
 
 }
 
+/* FUNCION RENDERIZADO */
 
+const renderProduct = (product) => {
+    const { name, description, price_normal, discount, img, category } = product;
+    const precioDiscount = price_normal - (price_normal * (discount / 100))
+    let categoriaTitle = product === 'allProducts' ? `<h2>Todos</h2>` : `<h2>${category.toUpperCase()}</h2>`;
 
+    NAME_CATEGORY_DIV.innerHTML = categoriaTitle;
+
+    CARD_CONTAINER.innerHTML += `
+        <div class="cardProduct__card">
+              <div class="discount"><p>${discount}%OFF</p></div>
+              <div class="contains_img">
+              <img
+              class="discountcardProduct__img"
+              src="${img}"
+              alt=""
+            /></div>
+              
+              <p class="cardProduct__name">${name}</p>
+              <p class="cardProduct__details">
+              ${description}
+              </p>
+              <p class="cardProduct__cuotas">
+                12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
+              </p>
+              <p class="cardProduct__preciodiscount">$${price_normal}</p>
+              <p class="cardProduct__precio">$${precioDiscount}</p>
+              <input class="cardProduct__btn" type="submit" value="ADD CART" />
+            </div>
+           
+        `
+        ;
+}
 
 /* RENDERIZADO PRODUCTOS */
 const renderCardProduct = (categoria) => {
@@ -135,33 +167,7 @@ const renderCardProduct = (categoria) => {
 
         stock.forEach(e => {
 
-            const { name, description, price_normal, discount, img, category } = e;
-            const precioDiscount = price_normal - (price_normal * (discount / 100))
-            NAME_CATEGORY_DIV.innerHTML = `<h2>Todos</h2>`;
-
-            CARD_CONTAINER.innerHTML += `
-                <div class="cardProduct__card">
-                      <div class="discount"><p>${discount}%OFF</p></div>
-                      <div class="contains_img">
-                      <img
-                      class="discountcardProduct__img"
-                      src="${img}"
-                      alt=""
-                    /></div>
-                      
-                      <p class="cardProduct__name">${name}</p>
-                      <p class="cardProduct__details">
-                      ${description}
-                      </p>
-                      <p class="cardProduct__cuotas">
-                        12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
-                      </p>
-                      <p class="cardProduct__preciodiscount">$${price_normal}</p>
-                      <p class="cardProduct__precio">$${precioDiscount}</p>
-                      <input class="cardProduct__btn" type="submit" value="ADD CART" />
-                    </div>
-                   
-                `
+            renderProduct(e)
 
         })
 
@@ -169,33 +175,7 @@ const renderCardProduct = (categoria) => {
 
         getLSOrderArray.forEach(e => {
 
-            const { name, description, price_normal, discount, img, category } = e;
-            const precioDiscount = price_normal - (price_normal * (discount / 100))
-            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
-
-            CARD_CONTAINER.innerHTML += `
-                <div class="cardProduct__card">
-                      <div class="discount"><p>${discount}%OFF</p></div>
-                      <div class="contains_img">
-                      <img
-                      class="discountcardProduct__img"
-                      src="${img}"
-                      alt=""
-                    /></div>
-                      
-                      <p class="cardProduct__name">${name}</p>
-                      <p class="cardProduct__details">
-                      ${description}
-                      </p>
-                      <p class="cardProduct__cuotas">
-                        12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
-                      </p>
-                      <p class="cardProduct__preciodiscount">$${price_normal}</p>
-                      <p class="cardProduct__precio">$${precioDiscount}</p>
-                      <input class="cardProduct__btn" type="submit" value="ADD CART" />
-                    </div>
-                   
-                `
+            renderProduct(e)
 
         })
 
@@ -204,65 +184,12 @@ const renderCardProduct = (categoria) => {
         productsFilters.forEach(e => {
 
 
-            const { name, description, price_normal, discount, img, category } = e;
-            const precioDiscount = price_normal - (price_normal * (discount / 100))
-
-            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
-
-            CARD_CONTAINER.innerHTML += `
-                 <div class="cardProduct__card">
-                       <div class="discount"><p>${discount}%OFF</p></div>
-                       <div class="contains_img">
-                       <img
-                       class="discountcardProduct__img"
-                       src="${img}"
-                       alt=""
-                     /></div>
-                       
-                       <p class="cardProduct__name">${name}</p>
-                       <p class="cardProduct__details">
-                       ${description}
-                       </p>
-                       <p class="cardProduct__cuotas">
-                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
-                       </p>
-                       <p class="cardProduct__preciodiscount">${price_normal}</p>
-                       <p class="cardProduct__precio">$${precioDiscount}</p>
-                       <input class="cardProduct__btn" type="submit" value="ADD CART" />
-                     </div>
-                    
-                 `
+            renderProduct(e)
         })
     } else {
         categoria.forEach(e => {
 
-            const { name, description, price_normal, discount, img, category } = e;
-            const precioDiscount = price_normal - (price_normal * (discount / 100))
-            NAME_CATEGORY_DIV.innerHTML = `<h2>${category.toUpperCase()}</h2>`;
-
-            CARD_CONTAINER.innerHTML += `
-                <div class="cardProduct__card">
-                      <div class="discount"><p>${discount}%OFF</p></div>
-                      <div class="contains_img">
-                      <img
-                      class="discountcardProduct__img"
-                      src="${img}"
-                      alt=""
-                    /></div>
-                      
-                      <p class="cardProduct__name">${name}</p>
-                      <p class="cardProduct__details">
-                      ${description}
-                      </p>
-                      <p class="cardProduct__cuotas">
-                        12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
-                      </p>
-                      <p class="cardProduct__preciodiscount">$${price_normal}</p>
-                      <p class="cardProduct__precio">$${precioDiscount}</p>
-                      <input class="cardProduct__btn" type="submit" value="ADD CART" />
-                    </div>
-                   
-                `
+            renderProduct(e)
 
         })
     }
@@ -432,7 +359,7 @@ const init = () => {
     BTN_burger.addEventListener('click', deployMenu);
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
     SEARCH_ICON.addEventListener('click', deploySearch);
-    IMPUT_SEARCH.addEventListener('keyup', searching);
+    IMPUT_SEARCH.addEventListener('keyup', searchingProduct);
     CART_ICON.addEventListener('click', deployCart);
     ORDER_BTN.addEventListener('click', openOrder)
     CATEGORY_BTN.addEventListener('click', openCategorys)

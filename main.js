@@ -156,7 +156,7 @@ const renderCardProduct = (categoria) => {
                       <p class="cardProduct__cuotas">
                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                       </p>
-                      <p class="cardProduct__preciodiscount">${price_normal}</p>
+                      <p class="cardProduct__preciodiscount">$${price_normal}</p>
                       <p class="cardProduct__precio">$${precioDiscount}</p>
                       <input class="cardProduct__btn" type="submit" value="ADD CART" />
                     </div>
@@ -190,7 +190,7 @@ const renderCardProduct = (categoria) => {
                       <p class="cardProduct__cuotas">
                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                       </p>
-                      <p class="cardProduct__preciodiscount">${price_normal}</p>
+                      <p class="cardProduct__preciodiscount">$${price_normal}</p>
                       <p class="cardProduct__precio">$${precioDiscount}</p>
                       <input class="cardProduct__btn" type="submit" value="ADD CART" />
                     </div>
@@ -257,7 +257,7 @@ const renderCardProduct = (categoria) => {
                       <p class="cardProduct__cuotas">
                         12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
                       </p>
-                      <p class="cardProduct__preciodiscount">${price_normal}</p>
+                      <p class="cardProduct__preciodiscount">$${price_normal}</p>
                       <p class="cardProduct__precio">$${precioDiscount}</p>
                       <input class="cardProduct__btn" type="submit" value="ADD CART" />
                     </div>

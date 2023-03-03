@@ -4,15 +4,16 @@
   flex-direction: column;
   position: fixed;
   justify-content: flex-start;
+  align-items: center;
   z-index: 996;
   width: 100%;
-  background-color: #d1d1d1;
+  background-color: #ffffff;
   color: #020101;
   transition: all 0.2s ease-in-out;
   top: 81px;
-  left: -102%;
+  left: 102%;
   font-weight: 600;
-  border: 5px rgba(16, 11, 11, 0.738) solid;
+  border: 3px rgba(16, 11, 11, 0.738) solid;
 }
 .noProductsText {
   width: 100%;
@@ -27,51 +28,70 @@
   top: 80px;
   left: 0;
 }
-.product__cart {
-  background-color: rgb(255, 255, 255);
+/* CARD CARRITO */
+.cart__product {
+  width: 95%;
+  background-color: #e7dfdf;
   display: flex;
-
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 10px;
+}
+.cart__product-img {
+  width: 30%;
+  padding: 10px;
+}
+.cart__product-description {
+  text-align: center;
+}
+.cart_price {
+  color: rgb(54, 128, 33);
+}
 
+.cart__btn-add-remove {
   width: 100%;
-  padding: 20px;
-  border: 2px solid rgb(255, 254, 254);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.product__cart img {
-  width: 20%;
-  object-fit: cover;
-}
-.product__cart p {
-  font-size: 17px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.cart__qualy {
-  text-align: end;
-  width: 25;
-  height: 100%;
-}
-.removeAmount {
-  width: 30px;
-  height: 30px;
-}
-.amount {
-  padding: 5px 15px;
-}
-.addAmount {
-  width: 30px;
-  height: 30px;
+.cart__product-btn {
+  width: 40%;
 }
 
-.product__delete img {
-  margin-left: 20px;
-  width: 55px;
+.add {
+}
+.cart_quantity {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-size: 20px;
+}
+.remove {
+}
+.cart__product-delete {
+  width: 40%;
+  border: none;
+  background-color: #cfccccc6;
+  border-radius: 5px;
+  padding: 4px;
+
+  box-shadow: rgb(125, 124, 124) 0px 0px 3px 3px;
+}
+.cart__product-delete img {
+  width: 100%;
   object-fit: cover;
 }
+/* ----------------- */
 .cart__Allbtn {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .cart__btn-pay {

@@ -175,6 +175,12 @@ form {
 
   left: -102%;
 }
+.burger__div a {
+  text-decoration: none;
+}
+.burger__div a:visited {
+  color: rgb(255, 255, 255);
+}
 .burger__menu-active {
   top: 80px;
   left: 0;
@@ -209,7 +215,7 @@ form {
 }
 
 .burger__section-categorias {
-  background-color: rgb(205, 185, 165);
+  background-color: rgb(154, 142, 131);
   font-size: 1.4rem;
   color: rgb(48, 37, 37);
 }

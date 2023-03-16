@@ -85,7 +85,7 @@ export const stock = [{
     discount: 10,
     img: './Muebles/Sommiers/1.jpg',
     category: 'sommiers',
-    id: 1
+    id: 7
 
 }, {
     name: 'Cama Premium ',
@@ -95,7 +95,7 @@ export const stock = [{
     discount: 10,
     img: './Muebles/Sommiers/2.jpg',
     category: 'sommiers',
-    id: 2
+    id: 8
 }, {
     name: 'Cama Flotante',
     description: 'Cama son soporte de Pared Efecto Flotante',
@@ -104,7 +104,7 @@ export const stock = [{
     discount: 5,
     img: './Muebles/Sommiers/3.jpg',
     category: 'sommiers',
-    id: 3
+    id: 9
 }, {
     name: 'Cama Futuristica',
     description: 'Cama Base con ovalada y Cholchon de Evalastic con Euro Pillow',
@@ -113,7 +113,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Sommiers/4.jpg',
     category: 'sommiers',
-    id: 4
+    id: 10
 },
 
 
@@ -125,7 +125,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Exterior/1.jpg',
     category: 'exterior',
-    id: 1,
+    id: 11,
 
 
 }, {
@@ -136,7 +136,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Exterior/2.jpg',
     category: 'exterior',
-    id: 2
+    id: 12
 }, {
     name: 'Set Mesa y Sillas Blancas Anti-Humedad',
     description: 'Set Blanco y Mesa Resistente 1,8M X 0.7M',
@@ -145,7 +145,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Exterior/3.jpg',
     category: 'exterior',
-    id: 3
+    id: 13
 }, {
     name: 'Set de Diseño Metalico',
     description: 'set Moderno Metal ',
@@ -154,7 +154,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Exterior/4.jpg',
     category: 'exterior',
-    id: 4
+    id: 14
 }, {
     name: 'Set Aluminio',
     description: 'Sillas Y Mesa Aluminio 2M x 0.8M',
@@ -163,7 +163,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Exterior/5.webp',
     category: 'exterior',
-    id: 5
+    id: 15
 },
 
 {
@@ -174,7 +174,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Mesas/1.jpg',
     category: 'mesas',
-    id: 1
+    id: 16
 
 }, {
     name: 'Mesa Redonda Vidrio',
@@ -184,7 +184,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Mesas/2.jpg',
     category: 'mesas',
-    id: 2
+    id: 17
 }, {
     name: 'Mesa de Madera Roble',
     description: 'Mesa grande Madera extra Fuerte Roble 2M X 0.9M',
@@ -193,7 +193,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Mesas/3.webp',
     category: 'mesas',
-    id: 3
+    id: 18
 }, {
     name: 'Mesa Bambu Liviana',
     description: ' Mesa De Bambu Ultra Liviana 2M X 1M',
@@ -202,7 +202,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Mesas/4.jpg',
     category: 'mesas',
-    id: 4
+    id: 19
 }, {
     name: 'Mesa de Diseño Premium ',
     description: 'Mesa Premiun Acabados Artisticos',
@@ -211,7 +211,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Mesas/5.jpg',
     category: 'mesas',
-    id: 5
+    id: 20
 },
 
 {
@@ -222,7 +222,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Roperos/1.jpg',
     category: 'roperos',
-    id: 1
+    id: 21
 
 }, {
     name: 'Ropero Madera Abedul',
@@ -232,7 +232,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Roperos/2.jpg',
     category: 'roperos',
-    id: 2
+    id: 22
 }, {
     name: 'Ropero Clasico Gris',
     description: 'Ropero Melamina Gris Ceniza',
@@ -241,7 +241,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Roperos/3.jpg',
     category: 'roperos',
-    id: 3
+    id: 23
 }, {
     name: 'Ropero Naranja con Barniz',
     description: 'Ropero Madera Barnizada',
@@ -250,7 +250,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Roperos/4.webp',
     category: 'roperos',
-    id: 4
+    id: 24
 }, {
     name: 'Ropero Bi Color',
     description: 'Ropero gis caoba y marron oscuro 2M X 1M',
@@ -259,7 +259,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Roperos/5.jpg',
     category: 'roperos',
-    id: 5
+    id: 25
 },
 
 {
@@ -270,7 +270,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Sofas/1.jpg',
     category: 'sofas',
-    id: 1
+    id: 26
 
 },
 {
@@ -281,7 +281,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Sofas/2.jpg',
     category: 'sofas',
-    id: 2,
+    id: 27,
 },
 {
     name: 'Sofa Premium Montevideo',
@@ -291,7 +291,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Sofas/4.jpg',
     category: 'sofas',
-    id: 3
+    id: 28
 },
 {
     name: 'Sofa XL 3 Ceniza',
@@ -301,7 +301,7 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Sofas/3.jpg',
     category: 'sofas',
-    id: 4
+    id: 29
 },
 {
     name: 'Sofa Paris Total Black',
@@ -311,5 +311,5 @@ export const stock = [{
     discount: 12,
     img: './Muebles/Sofas/5.jpg',
     category: 'sofas',
-    id: 5
+    id: 30
 }]

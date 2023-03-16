@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="estilos/cart.css">
+    <link rel="stylesheet" href="estilos/cart.css" />
     <title>Nuestros Productos</title>
   </head>
 
@@ -120,26 +120,12 @@
     <!--'''''''''''''''''''''''''''''''''''''''''''''''' CART ''''''''''''''''''''''''''''''''''''''''''''''''-->
 
     <div class="cart__div">
+      <div class="cardProduct_div"></div>
 
-<div class="cart__product">
-  <img class="cart__product-img" src="Muebles/Sillas/2.webp" alt="">
-  <p class="cart__product-description" >SILLA DE CUERO</p>
-  <p class="cart_price">$15000</p>
-  <div class="cart_quantity">
-    <div class="cart__btn-add-remove">
-
-      <button class="cart__product-btn add">+</button>
-      <p class="cart__product-quanty">1</p>
-      <button class="cart__product-btn remove">-</button>
-    </div>
-    <button class="cart__product-delete"><img src="Icons/remove-cart.png" alt=""></button>
-  </div>
-  
-</div>
-
-
-
-      <!-- <div class="noProductsText"><p>No se han agregado productos</p></div> -->
+      <div class="cart__total">
+        <p>Cantidad de Productos : 0</p>
+        <p>TOTAL = $ 50000</p>
+      </div>
 
       <div class="cart__Allbtn">
         <input class="cart__btn-pay" type="button" value="Pay" />
@@ -215,7 +201,7 @@
       </div>
       <section class="section-products">
         <div class="category-container"></div>
-        
+
         <div class="orderAndFilter">
           <div class="category categoryBtn">
             <img src="Icons/categoria.png" alt="" />
@@ -282,9 +268,6 @@
                 value="Menor Precio"
               />
             </div>
-          </div>
-
-          
           </div>
         </div>
       </section>

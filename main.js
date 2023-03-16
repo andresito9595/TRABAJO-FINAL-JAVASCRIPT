@@ -36,7 +36,9 @@ const CATEGORY = document.querySelector('.category_btn')
 
 const CART_DIV = document.querySelector('.cart__div');
 const CART_ICON = document.querySelector('.cart__icon');
-const ADDCART_BTN = document.querySelectorAll('.cardProduct__btn')
+let ADDCART_BTN = document.querySelectorAll('.cardProduct__btn');
+const PRODUCT_CART_DIV = document.querySelector('.cardProduct_div')
+
 
 /* PRODUCTS RENDER */
 
@@ -48,7 +50,7 @@ const BOTONES_ORDER = document.querySelectorAll('.filters_input-order') /* BOTON
 
 /* ORDER AND FILTERS BTN */
 
-const FILTERS_BTN = document.querySelector('.filtersBtn')
+
 const ORDER_BTN = document.querySelector('.orderBtn')
 const CATEGORY_BTN = document.querySelector('.categoryBtn')
 
@@ -128,7 +130,7 @@ const searchingProduct = (e) => {
 /* FUNCION RENDERIZADO */
 
 const renderProduct = (product) => {
-    const { name, description, price_normal, discount, img, category } = product;
+    const { name, description, price_normal, discount, img, category, id } = product;
     const precioDiscount = price_normal - (price_normal * (discount / 100))
     let categoriaTitle = product === 'allProducts' ? `<h2>Todos</h2>` : `<h2>${category.toUpperCase()}</h2>`;
 
@@ -153,11 +155,12 @@ const renderProduct = (product) => {
               </p>
               <p class="cardProduct__preciodiscount">$${price_normal}</p>
               <p class="cardProduct__precio">$${precioDiscount}</p>
-              <input class="cardProduct__btn" type="submit" value="ADD CART" />
+              <input class="cardProduct__btn" type="button" value="ADD CART" data-id="${id}" />
             </div>
            
         `
         ;
+
 }
 
 /* RENDERIZADO PRODUCTOS */
@@ -257,7 +260,8 @@ const iniciarCategorias = () => {
     else {
         renderCardProduct(getLS)
     }
-
+    actualizarBtnAdd();
+    console.log(ADDCART_BTN)
 }
 /* BUTTONS FILTERS */
 const buttonsFilters = (e) => {
@@ -347,22 +351,78 @@ const closeCart = (e) => {
 
 
 /* ------------------ */
+const actualizarBtnAdd = () => {
+    ADDCART_BTN = document.querySelectorAll('.cardProduct__btn')
+
+    ADDCART_BTN.forEach(boton => boton.addEventListener('click', addProduct))
+}
+/*  FUNCION AGREGAR PRODUCTO A CART */
+
+let productsAddedCart = []
+
+const addProduct = (e) => {
+
+    e.preventDefault();
+    const idBoton = e.target.dataset.id;
+
+    const productSelectedForCart = stock.find(producto => producto.id == idBoton)
+    if (!productsAddedCart.some(e => e === productSelectedForCart)) {
+
+        productSelectedForCart.cantidad = 1
+        productsAddedCart.push(productSelectedForCart)
+        renderProductInCart(productsAddedCart)
 
 
+    } else {
+        const index = productsAddedCart.findIndex(producto => producto.id == idBoton)
+        productsAddedCart[index].cantidad++
+        renderProductInCart(productsAddedCart)
+    }
 
+}
+
+const renderProductInCart = (arrayProductos) => {
+    PRODUCT_CART_DIV.innerHTML = ''
+    arrayProductos.forEach(producto => renderProductInDivCart(producto))
+
+}
+
+
+const renderProductInDivCart = (product) => {
+    const { img, description, price_normal, discount, cantidad } = product
+    const precioDiscount = price_normal - (price_normal * (discount / 100))
+    PRODUCT_CART_DIV.innerHTML +=
+        `<div class="cart__product">
+            <img class="cart__product-img" src="${img}" alt="">
+            <p class="cart__product-description">${description}</p>
+             <p class="cart_price">$${precioDiscount}</p>
+         <div class="cart_quantity">
+             <div class="cart__btn-add-remove">
+                <button class="cart__product-btn remove">-</button>
+                <p class="cart__product-quanty">${cantidad}</p>
+                <button class="cart__product-btn add">+</button>  
+             </div>
+<button class="cart__product-delete"><img src="Icons/remove-cart.png" alt=""></button>
+        </div>
+        </div>`
+}
+/* ------------------ */
 const init = () => {
-    BOTONES.forEach(e => e.addEventListener('click', selectCategory))
-    BOTONES_CATEGORY.forEach(e => e.addEventListener('click', buttonsFilters))
-    BOTONES_ORDER.forEach(e => e.addEventListener('click', orderProducts))
-    CATEGORY.addEventListener('click', selectCategory)
-    window.addEventListener('load', iniciarCategorias)
+    BOTONES.forEach(e => e.addEventListener('click', selectCategory));
+    BOTONES_CATEGORY.forEach(e => e.addEventListener('click', buttonsFilters));
+    BOTONES_ORDER.forEach(e => e.addEventListener('click', orderProducts));
+    CATEGORY.addEventListener('click', selectCategory);
+    window.addEventListener('load', iniciarCategorias);
     BTN_burger.addEventListener('click', deployMenu);
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searchingProduct);
     CART_ICON.addEventListener('click', deployCart);
-    ORDER_BTN.addEventListener('click', openOrder)
-    CATEGORY_BTN.addEventListener('click', openCategorys)
+    ORDER_BTN.addEventListener('click', openOrder);
+    CATEGORY_BTN.addEventListener('click', openCategorys);
+
+
+
 
 }
 

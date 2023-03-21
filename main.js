@@ -133,10 +133,11 @@ const renderProduct = (product) => {
     const { name, description, price_normal, discount, img, category, id } = product;
     const precioDiscount = price_normal - (price_normal * (discount / 100))
     let categoriaTitle = product === 'allProducts' ? `<h2>Todos</h2>` : `<h2>${category.toUpperCase()}</h2>`;
+    if (NAME_CATEGORY_DIV) {
 
-    NAME_CATEGORY_DIV.innerHTML = categoriaTitle;
+        NAME_CATEGORY_DIV.innerHTML = categoriaTitle;
 
-    CARD_CONTAINER.innerHTML += `
+        CARD_CONTAINER.innerHTML += `
         <div class="cardProduct__card">
               <div class="discount"><p>${discount}%OFF</p></div>
               <div class="contains_img">
@@ -159,7 +160,8 @@ const renderProduct = (product) => {
             </div>
            
         `
-        ;
+            ;
+    }
 
 }
 
@@ -254,14 +256,13 @@ const iniciarCategorias = () => {
     else if (getLS === 'allProducts') {
         setearLS('allProducts')
         renderCardProduct(getLS)
-
     }
 
     else {
         renderCardProduct(getLS)
     }
     actualizarBtnAdd();
-    console.log(ADDCART_BTN)
+
 }
 /* BUTTONS FILTERS */
 const buttonsFilters = (e) => {
@@ -349,7 +350,6 @@ const closeCart = (e) => {
 }
 
 
-
 /* ------------------ */
 const actualizarBtnAdd = () => {
     ADDCART_BTN = document.querySelectorAll('.cardProduct__btn')
@@ -358,28 +358,50 @@ const actualizarBtnAdd = () => {
 }
 /*  FUNCION AGREGAR PRODUCTO A CART */
 
-let productsAddedCart = []
+let productsAddedCart = JSON.parse(localStorage.getItem('productsInCart')) || []
+
+const LoadCart = () => {
+    console.log()
+    if (productsAddedCart.length === 0) {
+        console.log('entre al load')
+        const P = document.createElement('p')
+
+        P.innerText = 'El Carrito esta vacio'
+
+        CART_DIV.append(P)
+        renderProductInCart(productsAddedCart)
+    } else {
+        renderProductInCart(productsAddedCart)
+
+    }
+}
 
 const addProduct = (e) => {
 
-    e.preventDefault();
     const idBoton = e.target.dataset.id;
 
     const productSelectedForCart = stock.find(producto => producto.id == idBoton)
-    if (!productsAddedCart.some(e => e === productSelectedForCart)) {
-
+    if (!productsAddedCart.some(e => e.id === productSelectedForCart.id)) {
+        console.log('entre al if')
         productSelectedForCart.cantidad = 1
         productsAddedCart.push(productSelectedForCart)
         renderProductInCart(productsAddedCart)
 
 
     } else {
+        console.log('entre al else')
         const index = productsAddedCart.findIndex(producto => producto.id == idBoton)
         productsAddedCart[index].cantidad++
         renderProductInCart(productsAddedCart)
     }
 
+    localStorage.setItem('productsInCart', JSON.stringify(productsAddedCart))
 }
+
+
+
+
+
 
 const renderProductInCart = (arrayProductos) => {
     PRODUCT_CART_DIV.innerHTML = ''
@@ -408,6 +430,7 @@ const renderProductInDivCart = (product) => {
 }
 /* ------------------ */
 const init = () => {
+
     BOTONES.forEach(e => e.addEventListener('click', selectCategory));
     BOTONES_CATEGORY.forEach(e => e.addEventListener('click', buttonsFilters));
     BOTONES_ORDER.forEach(e => e.addEventListener('click', orderProducts));
@@ -418,10 +441,14 @@ const init = () => {
     SEARCH_ICON.addEventListener('click', deploySearch);
     IMPUT_SEARCH.addEventListener('keyup', searchingProduct);
     CART_ICON.addEventListener('click', deployCart);
-    ORDER_BTN.addEventListener('click', openOrder);
-    CATEGORY_BTN.addEventListener('click', openCategorys);
+    LoadCart()
+    if (ORDER_BTN) {
 
-
+        ORDER_BTN.addEventListener('click', openOrder);
+    }
+    if (CATEGORY_BTN) {
+        CATEGORY_BTN.addEventListener('click', openCategorys);
+    }
 
 
 }

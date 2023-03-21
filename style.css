@@ -184,7 +184,6 @@ form {
 .burger__menu-active {
   top: 80px;
   left: 0;
-  height: 100%;
 }
 .burger__section {
   background-color: var(--secundary-color);

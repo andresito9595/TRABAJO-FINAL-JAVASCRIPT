@@ -40,6 +40,7 @@ let ADDCART_BTN = document.querySelectorAll('.cardProduct__btn');
 const PRODUCT_CART_DIV = document.querySelector('.cardProduct_div')
 
 
+
 /* PRODUCTS RENDER */
 
 const BOTONES = document.querySelectorAll('.botonesCATEGORY') /*  BOTONES MENU HAMBURGUESA FILTRADO */
@@ -68,9 +69,11 @@ const deployMenu = (e) => {
         if (BURGER_MENU.classList.contains('burger__menu-active')) {
             IMPUT_SEARCH.classList.remove('search_active')
             CART_DIV.classList.remove('cart__div-active')
-            OVERLAY.style.display = 'block'
+            if (OVERLAY) {
+                OVERLAY.style.display = 'block'
+            }
         } else {
-            OVERLAY.style.display = 'none'
+            if (OVERLAY) { OVERLAY.style.display = 'none' }
         }
 
     }
@@ -96,11 +99,14 @@ const deployCart = (e) => {
     if (CART_DIV.classList.contains('cart__div-active')) {
         BURGER_MENU.classList.remove('burger__menu-active');
         IMPUT_SEARCH.classList.remove('search_active');
-        OVERLAY.style.display = 'block'
+        if (OVERLAY) {
+            OVERLAY.style.display = 'block'
+        }
         BODY.addEventListener('click', closeCart)
     } else {
-        OVERLAY.style.display = 'none'
-
+        if (OVERLAY) {
+            OVERLAY.style.display = 'none'
+        }
     }
 
 
@@ -336,6 +342,17 @@ const openCategorys = (e) => {
     }
 }
 
+/* FUNCION PARA CERRAR MENU BURGER */
+
+const closeMenu = (e) => {
+    if (BURGER_MENU.classList.contains('burger__menu-active')) {
+        if (e.target === OVERLAY) {
+            console.log('aca')
+            BURGER_MENU.classList.remove('burger__menu-active')
+            OVERLAY.style.display = 'none'
+        }
+    }
+}
 
 /* FUNCION PARA CERRAR CART */
 
@@ -351,14 +368,28 @@ const closeCart = (e) => {
 
 
 /* ------------------ */
+const actualizarBtnCart = () => {
+    let CART_DELETE = document.querySelectorAll('.cart__product-delete')
+    let CART_QUANTITY = document.querySelectorAll('.cart_quantity')
+    let CART_REMOVE = document.querySelectorAll('.remove')
+    let CART_ADD = document.querySelectorAll('.add')
+
+    CART_DELETE.forEach(btn => btn.addEventListener('click', deleteProduct))
+    CART_REMOVE.forEach(btn => btn.addEventListener('click', removeQuantity))
+    CART_ADD.forEach(btn => btn.addEventListener('click', addQuantity))
+
+}
 const actualizarBtnAdd = () => {
     ADDCART_BTN = document.querySelectorAll('.cardProduct__btn')
 
     ADDCART_BTN.forEach(boton => boton.addEventListener('click', addProduct))
 }
 /*  FUNCION AGREGAR PRODUCTO A CART */
-
 let productsAddedCart = JSON.parse(localStorage.getItem('productsInCart')) || []
+const loadProductsAddedCart = () => {
+
+    return productsAddedCart = JSON.parse(localStorage.getItem('productsInCart')) || []
+}
 
 const LoadCart = () => {
     console.log()
@@ -374,6 +405,7 @@ const LoadCart = () => {
         renderProductInCart(productsAddedCart)
 
     }
+
 }
 
 const addProduct = (e) => {
@@ -398,20 +430,17 @@ const addProduct = (e) => {
     localStorage.setItem('productsInCart', JSON.stringify(productsAddedCart))
 }
 
-
-
-
-
-
 const renderProductInCart = (arrayProductos) => {
-    PRODUCT_CART_DIV.innerHTML = ''
-    arrayProductos.forEach(producto => renderProductInDivCart(producto))
+    if (PRODUCT_CART_DIV) {
+
+        PRODUCT_CART_DIV.innerHTML = ''
+        arrayProductos.forEach(producto => renderProductInDivCart(producto))
+    }
 
 }
 
-
 const renderProductInDivCart = (product) => {
-    const { img, description, price_normal, discount, cantidad } = product
+    const { img, description, price_normal, discount, cantidad, id } = product
     const precioDiscount = price_normal - (price_normal * (discount / 100))
     PRODUCT_CART_DIV.innerHTML +=
         `<div class="cart__product">
@@ -424,17 +453,52 @@ const renderProductInDivCart = (product) => {
                 <p class="cart__product-quanty">${cantidad}</p>
                 <button class="cart__product-btn add">+</button>  
              </div>
-<button class="cart__product-delete"><img src="Icons/remove-cart.png" alt=""></button>
+<button class="cart__product-delete" data-id="${id}"><img src="Icons/remove-cart.png"  alt=""></button>
         </div>
         </div>`
+
+    actualizarBtnCart()
+
 }
 /* ------------------ */
+
+/* INTERACCIONES CART */
+const deleteProduct = (e) => {
+
+
+    let idProducto = e.currentTarget.dataset.id
+    console.log(idProducto)
+    console.log(productsAddedCart)
+
+    let newArray = productsAddedCart.filter(product => product.id != idProducto)
+
+    console.log(newArray)
+
+    localStorage.setItem('productsInCart', JSON.stringify(newArray))
+    loadProductsAddedCart()
+    console.log(productsAddedCart)
+
+    let card = e.target.closest('.cart__product');
+    card.remove()
+
+}
+const removeQuantity = () => {
+    console.log('log')
+}
+const addQuantity = () => {
+    console.log('loco')
+}
+
+
+
+/* ------------------ */
+
 const init = () => {
 
     BOTONES.forEach(e => e.addEventListener('click', selectCategory));
     BOTONES_CATEGORY.forEach(e => e.addEventListener('click', buttonsFilters));
     BOTONES_ORDER.forEach(e => e.addEventListener('click', orderProducts));
-    CATEGORY.addEventListener('click', selectCategory);
+
     window.addEventListener('load', iniciarCategorias);
     BTN_burger.addEventListener('click', deployMenu);
     SUBMENU_BTN.forEach(e => e.addEventListener('click', deploySubMenu))
@@ -442,6 +506,9 @@ const init = () => {
     IMPUT_SEARCH.addEventListener('keyup', searchingProduct);
     CART_ICON.addEventListener('click', deployCart);
     LoadCart()
+    if (CATEGORY) {
+        CATEGORY.addEventListener('click', selectCategory);
+    }
     if (ORDER_BTN) {
 
         ORDER_BTN.addEventListener('click', openOrder);
@@ -449,7 +516,10 @@ const init = () => {
     if (CATEGORY_BTN) {
         CATEGORY_BTN.addEventListener('click', openCategorys);
     }
-
+    if (OVERLAY) {
+        OVERLAY.addEventListener('click', closeMenu)
+    }
+    loadProductsAddedCart()
 
 }
 

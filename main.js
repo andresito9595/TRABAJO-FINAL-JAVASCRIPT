@@ -38,6 +38,8 @@ const CART_DIV = document.querySelector('.cart__div');
 const CART_ICON = document.querySelector('.cart__icon');
 let ADDCART_BTN = document.querySelectorAll('.cardProduct__btn');
 const PRODUCT_CART_DIV = document.querySelector('.cardProduct_div')
+const NOPRODUCTS = document.querySelector('.noProductsText')
+const TOTAL_CART = document.querySelector('.cart__total')
 
 
 
@@ -55,139 +57,23 @@ const BOTONES_ORDER = document.querySelectorAll('.filters_input-order') /* BOTON
 const ORDER_BTN = document.querySelector('.orderBtn')
 const CATEGORY_BTN = document.querySelector('.categoryBtn')
 
-
-
-/* MENU BURGER */
-
-const deployMenu = (e) => {
-
-    if (e.target.matches('.toggle *') || e.target.matches('.toggle')) {
-
-        BTN_burger.classList.toggle('toggle1')
-        BURGER_MENU.classList.toggle('burger__menu-active');
-        BODY.classList.toggle('overflow')
-        if (BURGER_MENU.classList.contains('burger__menu-active')) {
-            IMPUT_SEARCH.classList.remove('search_active')
-            CART_DIV.classList.remove('cart__div-active')
-            if (OVERLAY) {
-                OVERLAY.style.display = 'block'
-            }
-        } else {
-            if (OVERLAY) { OVERLAY.style.display = 'none' }
-        }
-
-    }
-}
-function deploySubMenu(e) {
-    e.preventDefault()
-
-    const childMenu = this.nextElementSibling
-    const height1 = childMenu.scrollHeight
-
-
-    if (childMenu.classList.contains('desplegar')) {
-        childMenu.classList.remove('desplegar')
-        childMenu.removeAttribute('style')
-    } else {
-        childMenu.classList.add('desplegar')
-        childMenu.style.height = `${height1 * childMenu.children.length * 2}px`
-    }
-}
-/* TOOGLE CART */
-const deployCart = (e) => {
-    CART_DIV.classList.toggle('cart__div-active')
-    if (CART_DIV.classList.contains('cart__div-active')) {
-        BURGER_MENU.classList.remove('burger__menu-active');
-        IMPUT_SEARCH.classList.remove('search_active');
-        if (OVERLAY) {
-            OVERLAY.style.display = 'block'
-        }
-        BODY.addEventListener('click', closeCart)
-    } else {
-        if (OVERLAY) {
-            OVERLAY.style.display = 'none'
-        }
-    }
-
-
-}
-/* SEARCH */
-
-const deploySearch = (e) => {
-
-    IMPUT_SEARCH.classList.toggle('search_active')
-    if (IMPUT_SEARCH.classList.contains('search_active')) {
-        BURGER_MENU.classList.remove('burger__menu-active')
-        CART_DIV.classList.remove('cart__div-active')
-    }
-    IMPUT_SEARCH.focus()
-    FORM.reset()
-
+const controladorProductos = {
+    cantidad: 0,
+    total: 0
 }
 
-const searchingProduct = (e) => {
 
-    const fitroCategoria = () => {
 
-    }
-
-}
-
-/* FUNCION RENDERIZADO */
-
-const renderProduct = (product) => {
-    const { name, description, price_normal, discount, img, category, id } = product;
-    const precioDiscount = price_normal - (price_normal * (discount / 100))
-    let categoriaTitle = product === 'allProducts' ? `<h2>Todos</h2>` : `<h2>${category.toUpperCase()}</h2>`;
-    if (NAME_CATEGORY_DIV) {
-
-        NAME_CATEGORY_DIV.innerHTML = categoriaTitle;
-
-        CARD_CONTAINER.innerHTML += `
-        <div class="cardProduct__card">
-              <div class="discount"><p>${discount}%OFF</p></div>
-              <div class="contains_img">
-              <img
-              class="discountcardProduct__img"
-              src="${img}"
-              alt=""
-            /></div>
-              
-              <p class="cardProduct__name">${name}</p>
-              <p class="cardProduct__details">
-              ${description}
-              </p>
-              <p class="cardProduct__cuotas">
-                12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
-              </p>
-              <p class="cardProduct__preciodiscount">$${price_normal}</p>
-              <p class="cardProduct__precio">$${precioDiscount}</p>
-              <input class="cardProduct__btn" type="button" value="ADD CART" data-id="${id}" />
-            </div>
-           
-        `
-            ;
-    }
-
-}
 
 /* RENDERIZADO PRODUCTOS */
 const renderCardProduct = (categoria) => {
-
     if (categoria === 'allProducts') {
-
         stock.forEach(e => {
-
             renderProduct(e)
-
         })
-
     } else if (order === 'mayor' || order === 'menor') {
-
         getLSOrderArray.forEach(e => {
-
             renderProduct(e)
-
         })
 
     } else if (stock.some(e => e.category === categoria)) {
@@ -201,10 +87,8 @@ const renderCardProduct = (categoria) => {
         categoria.forEach(e => {
 
             renderProduct(e)
-
         })
     }
-
 }
 
 
@@ -268,6 +152,7 @@ const iniciarCategorias = () => {
         renderCardProduct(getLS)
     }
     actualizarBtnAdd();
+
 
 }
 /* BUTTONS FILTERS */
@@ -370,7 +255,7 @@ const closeCart = (e) => {
 /* ------------------ */
 const actualizarBtnCart = () => {
     let CART_DELETE = document.querySelectorAll('.cart__product-delete')
-    let CART_QUANTITY = document.querySelectorAll('.cart_quantity')
+
     let CART_REMOVE = document.querySelectorAll('.remove')
     let CART_ADD = document.querySelectorAll('.add')
 
@@ -379,6 +264,40 @@ const actualizarBtnCart = () => {
     CART_ADD.forEach(btn => btn.addEventListener('click', addQuantity))
 
 }
+const AmountTotal = () => {
+    let PRODUCTS_DIV_BOX = document.querySelector('.cart__product');
+
+    if (PRODUCTS_DIV_BOX) {
+        TOTAL_CART.innerHTML = `
+        <p>Cantidad de Productos : ${controladorProductos.cantidad}</p>
+        <p>TOTAL = $ ${controladorProductos.total}</p>
+        `
+    }
+}
+
+const sumadorTotal = (precio) => {
+    controladorProductos.total = controladorProductos.total + precio
+}
+
+const setearLsCantidad = () => {
+
+    localStorage.setItem('cantidadCart', JSON.stringify(controladorProductos.cantidad))
+    localStorage.setItem('totalCart', JSON.stringify(controladorProductos.total))
+}
+
+let cantidadCartLS = JSON.parse(localStorage.getItem('cantidadCart'))
+let totalCartLS = JSON.parse(localStorage.getItem('totalCart'))
+
+const actualizarCantidadCart = () => {
+    controladorProductos.cantidad = cantidadCartLS
+    controladorProductos.total = totalCartLS
+}
+
+
+
+
+
+
 const actualizarBtnAdd = () => {
     ADDCART_BTN = document.querySelectorAll('.cardProduct__btn')
 
@@ -386,27 +305,95 @@ const actualizarBtnAdd = () => {
 }
 /*  FUNCION AGREGAR PRODUCTO A CART */
 let productsAddedCart = JSON.parse(localStorage.getItem('productsInCart')) || []
+
 const loadProductsAddedCart = () => {
 
     return productsAddedCart = JSON.parse(localStorage.getItem('productsInCart')) || []
 }
 
-const LoadCart = () => {
-    console.log()
-    if (productsAddedCart.length === 0) {
-        console.log('entre al load')
-        const P = document.createElement('p')
+const textNoProducts = () => {
+    let PRODUCTS_DIV_BOX = document.querySelector('.cart__product')
 
-        P.innerText = 'El Carrito esta vacio'
+    if (PRODUCTS_DIV_BOX) {
 
-        CART_DIV.append(P)
-        renderProductInCart(productsAddedCart)
+        NOPRODUCTS.style.display = 'none'
     } else {
-        renderProductInCart(productsAddedCart)
 
+        NOPRODUCTS.style.display = 'flex'
     }
+}
+
+const LoadCart = () => {
+
+    renderProductInCart(productsAddedCart)
+    textNoProducts()
+}
+
+const deleteProduct = (e) => {
+
+    let idProducto = e.currentTarget.dataset.id
+    let newArray = productsAddedCart.filter(product => product.id != idProducto)
+
+    localStorage.setItem('productsInCart', JSON.stringify(newArray))
+    loadProductsAddedCart()
+
+    let card = e.target.closest('.cart__product');
+    let divQuantity = e.currentTarget.previousElementSibling
+    let cantidad = divQuantity.children[1].textContent
+    let newcantidad = parseFloat(cantidad)
+
+    controladorProductos.cantidad = controladorProductos.cantidad - newcantidad
+
+
+    let card2 = e.target.closest('.cart__product');
+
+    let price = card2.children[2].textContent;
+    let totalString = price.slice(1)
+    let totalNumber = parseFloat(totalString)
+
+
+    controladorProductos.total = controladorProductos.total - totalNumber
+
+
+
+    /* let newcantidad2 = parseFloat(cantidad2) */
+
+
+    AmountTotal()
+    LoadCart()
+    card.remove()
+    setearLsCantidad()
+
+
 
 }
+const removeQuantity = () => {
+    console.log('log')
+}
+const addQuantity = () => {
+    console.log('loco')
+}
+
+
+
+/* ------------------ */
+const openCart = () => {
+
+    CART_DIV.classList.toggle('cart__div-active')
+    if (CART_DIV.classList.contains('cart__div-active')) {
+        BURGER_MENU.classList.remove('burger__menu-active');
+        IMPUT_SEARCH.classList.remove('search_active');
+        if (OVERLAY) {
+            OVERLAY.style.display = 'block'
+        }
+        BODY.addEventListener('click', closeCart)
+    } else {
+        if (OVERLAY) {
+            OVERLAY.style.display = 'none'
+        }
+    }
+}
+
 
 const addProduct = (e) => {
 
@@ -414,28 +401,157 @@ const addProduct = (e) => {
 
     const productSelectedForCart = stock.find(producto => producto.id == idBoton)
     if (!productsAddedCart.some(e => e.id === productSelectedForCart.id)) {
-        console.log('entre al if')
+
         productSelectedForCart.cantidad = 1
         productsAddedCart.push(productSelectedForCart)
         renderProductInCart(productsAddedCart)
+        openCart()
+        textNoProducts()
+        controladorProductos.cantidad++
 
+        let card2 = e.target.previousElementSibling.textContent
+        console.log(card2)
+
+        let totalString = card2.slice(1)
+        let totalNumber = parseFloat(totalString)
+        console.log(totalNumber)
+        sumadorTotal(totalNumber)
+        AmountTotal()
+        setearLsCantidad()
 
     } else {
-        console.log('entre al else')
+
         const index = productsAddedCart.findIndex(producto => producto.id == idBoton)
         productsAddedCart[index].cantidad++
         renderProductInCart(productsAddedCart)
+        openCart()
+        textNoProducts()
+        controladorProductos.cantidad++
+
+        AmountTotal()
+        setearLsCantidad()
     }
 
     localStorage.setItem('productsInCart', JSON.stringify(productsAddedCart))
 }
+/* MENU BURGER */
 
+const deployMenu = (e) => {
+
+    if (e.target.matches('.toggle *') || e.target.matches('.toggle')) {
+
+        BTN_burger.classList.toggle('toggle1')
+        BURGER_MENU.classList.toggle('burger__menu-active');
+        BODY.classList.toggle('overflow')
+        if (BURGER_MENU.classList.contains('burger__menu-active')) {
+            IMPUT_SEARCH.classList.remove('search_active')
+            CART_DIV.classList.remove('cart__div-active')
+            if (OVERLAY) {
+                OVERLAY.style.display = 'block'
+            }
+        } else {
+            if (OVERLAY) { OVERLAY.style.display = 'none' }
+        }
+
+    }
+}
+function deploySubMenu(e) {
+    e.preventDefault()
+
+    const childMenu = this.nextElementSibling
+    const height1 = childMenu.scrollHeight
+
+
+    if (childMenu.classList.contains('desplegar')) {
+        childMenu.classList.remove('desplegar')
+        childMenu.removeAttribute('style')
+    } else {
+        childMenu.classList.add('desplegar')
+        childMenu.style.height = `${height1 * childMenu.children.length * 2}px`
+    }
+}
+/* TOOGLE CART */
+const deployCart = (e) => {
+    CART_DIV.classList.toggle('cart__div-active')
+    if (CART_DIV.classList.contains('cart__div-active')) {
+        BURGER_MENU.classList.remove('burger__menu-active');
+        IMPUT_SEARCH.classList.remove('search_active');
+        if (OVERLAY) {
+            OVERLAY.style.display = 'block'
+        }
+        BODY.addEventListener('click', closeCart)
+    } else {
+        if (OVERLAY) {
+            OVERLAY.style.display = 'none'
+        }
+    }
+
+
+}
+/* SEARCH */
+
+const deploySearch = (e) => {
+
+    IMPUT_SEARCH.classList.toggle('search_active')
+    if (IMPUT_SEARCH.classList.contains('search_active')) {
+        BURGER_MENU.classList.remove('burger__menu-active')
+        CART_DIV.classList.remove('cart__div-active')
+    }
+    IMPUT_SEARCH.focus()
+    FORM.reset()
+
+}
+
+const searchingProduct = (e) => {
+
+
+
+}
+
+/* FUNCION RENDERIZADO */
+
+const renderProduct = (product) => {
+    const { name, description, price_normal, discount, img, category, id } = product;
+    const precioDiscount = price_normal - (price_normal * (discount / 100))
+    let categoriaTitle = product === 'allProducts' ? `<h2>Todos</h2>` : `<h2>${category.toUpperCase()}</h2>`;
+    if (NAME_CATEGORY_DIV) {
+
+        NAME_CATEGORY_DIV.innerHTML = categoriaTitle;
+
+        CARD_CONTAINER.innerHTML += `
+        <div class="cardProduct__card">
+              <div class="discount"><p>${discount}%OFF</p></div>
+              <div class="contains_img">
+              <img
+              class="discountcardProduct__img"
+              src="${img}"
+              alt=""
+            /></div>
+              
+              <p class="cardProduct__name">${name}</p>
+              <p class="cardProduct__details">
+              ${description}
+              </p>
+              <p class="cardProduct__cuotas">
+                12 CUOTAS SIN INTERES DE $${(precioDiscount / 12.).toFixed(2)}
+              </p>
+              <p class="cardProduct__preciodiscount">$${price_normal}</p>
+              <p class="cardProduct__precio">$${precioDiscount}</p>
+              <input class="cardProduct__btn" type="button" value="ADD CART" data-id="${id}" />
+            </div>
+           
+        `
+            ;
+    }
+
+}
 const renderProductInCart = (arrayProductos) => {
     if (PRODUCT_CART_DIV) {
 
         PRODUCT_CART_DIV.innerHTML = ''
         arrayProductos.forEach(producto => renderProductInDivCart(producto))
     }
+
 
 }
 
@@ -455,43 +571,19 @@ const renderProductInDivCart = (product) => {
              </div>
 <button class="cart__product-delete" data-id="${id}"><img src="Icons/remove-cart.png"  alt=""></button>
         </div>
-        </div>`
+        </div>
+        `
 
     actualizarBtnCart()
+
+
 
 }
 /* ------------------ */
 
 /* INTERACCIONES CART */
-const deleteProduct = (e) => {
 
-
-    let idProducto = e.currentTarget.dataset.id
-    console.log(idProducto)
-    console.log(productsAddedCart)
-
-    let newArray = productsAddedCart.filter(product => product.id != idProducto)
-
-    console.log(newArray)
-
-    localStorage.setItem('productsInCart', JSON.stringify(newArray))
-    loadProductsAddedCart()
-    console.log(productsAddedCart)
-
-    let card = e.target.closest('.cart__product');
-    card.remove()
-
-}
-const removeQuantity = () => {
-    console.log('log')
-}
-const addQuantity = () => {
-    console.log('loco')
-}
-
-
-
-/* ------------------ */
+actualizarCantidadCart()
 
 const init = () => {
 
@@ -506,6 +598,7 @@ const init = () => {
     IMPUT_SEARCH.addEventListener('keyup', searchingProduct);
     CART_ICON.addEventListener('click', deployCart);
     LoadCart()
+
     if (CATEGORY) {
         CATEGORY.addEventListener('click', selectCategory);
     }

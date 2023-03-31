@@ -74,6 +74,10 @@
 }
 .add {
 }
+.cart__product-quanty {
+  text-align: center;
+  width: 30%;
+}
 .remove {
 }
 .cart__product-delete {

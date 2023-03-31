@@ -168,7 +168,7 @@ export const stock = [{
 
 {
     name: 'Mesa Simil Madera ',
-    description: 'Mesa extremos de Aluminio Centro Madera Patas Aluminio 1.8M X 0.8M',
+    description: 'Mesa extremos de Aluminio Centro Madera',
     material: 'Madera y Aluminio',
     price_normal: 100000,
     discount: 12,

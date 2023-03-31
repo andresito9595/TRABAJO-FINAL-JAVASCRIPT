@@ -232,7 +232,7 @@ const openCategorys = (e) => {
 const closeMenu = (e) => {
     if (BURGER_MENU.classList.contains('burger__menu-active')) {
         if (e.target === OVERLAY) {
-            console.log('aca')
+
             BURGER_MENU.classList.remove('burger__menu-active')
             OVERLAY.style.display = 'none'
         }
@@ -244,7 +244,7 @@ const closeMenu = (e) => {
 const closeCart = (e) => {
     if (CART_DIV.classList.contains('cart__div-active')) {
         if (e.target === OVERLAY) {
-            console.log('aca')
+
             CART_DIV.classList.remove('cart__div-active')
             OVERLAY.style.display = 'none'
         }
@@ -261,7 +261,7 @@ const actualizarBtnCart = () => {
 
     CART_DELETE.forEach(btn => btn.addEventListener('click', deleteProduct))
     CART_REMOVE.forEach(btn => btn.addEventListener('click', removeQuantity))
-    CART_ADD.forEach(btn => btn.addEventListener('click', addQuantity))
+    CART_ADD.forEach(btn => btn.addEventListener('click', addProductBTN))
 
 }
 const AmountTotal = () => {
@@ -275,8 +275,16 @@ const AmountTotal = () => {
     }
 }
 
-const sumadorTotal = (precio) => {
-    controladorProductos.total = controladorProductos.total + precio
+
+
+
+const sumadorTotal = (precio, operacion) => {
+    if (operacion === 'sumar') {
+
+        controladorProductos.total = controladorProductos.total + precio
+    } else {
+        controladorProductos.total = controladorProductos.total - precio
+    }
 }
 
 const setearLsCantidad = () => {
@@ -327,8 +335,55 @@ const LoadCart = () => {
 
     renderProductInCart(productsAddedCart)
     textNoProducts()
+    AmountTotal()
 }
 
+
+const removeQuantity = (e) => {
+    const idBoton = e.target.dataset.id;
+    console.log(idBoton)
+    const productSelectedForCart = stock.find(producto => producto.id == idBoton)
+    console.log(productSelectedForCart)
+    const index = productsAddedCart.findIndex(producto => producto.id == idBoton)
+    if (productsAddedCart[index].cantidad === 1) {
+        return
+    }
+
+    productsAddedCart[index].cantidad--
+    renderProductInCart(productsAddedCart)
+    console.log(productSelectedForCart)
+
+    const { price_normal, discount } = productSelectedForCart
+
+    let precio = price_normal - (price_normal * (discount / 100))
+
+    textNoProducts()
+    controladorProductos.cantidad--
+    sumadorTotal(precio, 'resta')
+    AmountTotal()
+    setearLsCantidad()
+}
+
+
+
+
+/* ------------------ */
+const openCart = () => {
+
+    CART_DIV.classList.toggle('cart__div-active')
+    if (CART_DIV.classList.contains('cart__div-active')) {
+        BURGER_MENU.classList.remove('burger__menu-active');
+        IMPUT_SEARCH.classList.remove('search_active');
+        if (OVERLAY) {
+            OVERLAY.style.display = 'block'
+        }
+        BODY.addEventListener('click', closeCart)
+    } else {
+        if (OVERLAY) {
+            OVERLAY.style.display = 'none'
+        }
+    }
+}
 const deleteProduct = (e) => {
 
     let idProducto = e.currentTarget.dataset.id
@@ -352,7 +407,7 @@ const deleteProduct = (e) => {
     let totalNumber = parseFloat(totalString)
 
 
-    controladorProductos.total = controladorProductos.total - totalNumber
+    controladorProductos.total = controladorProductos.total - (totalNumber * newcantidad)
 
 
 
@@ -367,38 +422,30 @@ const deleteProduct = (e) => {
 
 
 }
-const removeQuantity = () => {
-    console.log('log')
+const addProductBTN = (e) => {
+    const idBoton = e.target.dataset.id;
+    console.log(idBoton)
+    const productSelectedForCart = stock.find(producto => producto.id == idBoton)
+    console.log(productSelectedForCart)
+    const index = productsAddedCart.findIndex(producto => producto.id == idBoton)
+    productsAddedCart[index].cantidad++
+    renderProductInCart(productsAddedCart)
+    console.log(productSelectedForCart)
+
+    const { price_normal, discount } = productSelectedForCart
+
+    let precio = price_normal - (price_normal * (discount / 100))
+    console.log(' este es el precio ' + precio)
+    textNoProducts()
+    controladorProductos.cantidad++
+    sumadorTotal(precio, 'sumar')
+    AmountTotal()
+    setearLsCantidad()
 }
-const addQuantity = () => {
-    console.log('loco')
-}
-
-
-
-/* ------------------ */
-const openCart = () => {
-
-    CART_DIV.classList.toggle('cart__div-active')
-    if (CART_DIV.classList.contains('cart__div-active')) {
-        BURGER_MENU.classList.remove('burger__menu-active');
-        IMPUT_SEARCH.classList.remove('search_active');
-        if (OVERLAY) {
-            OVERLAY.style.display = 'block'
-        }
-        BODY.addEventListener('click', closeCart)
-    } else {
-        if (OVERLAY) {
-            OVERLAY.style.display = 'none'
-        }
-    }
-}
-
-
 const addProduct = (e) => {
 
     const idBoton = e.target.dataset.id;
-
+    console.log(idBoton)
     const productSelectedForCart = stock.find(producto => producto.id == idBoton)
     if (!productsAddedCart.some(e => e.id === productSelectedForCart.id)) {
 
@@ -415,7 +462,7 @@ const addProduct = (e) => {
         let totalString = card2.slice(1)
         let totalNumber = parseFloat(totalString)
         console.log(totalNumber)
-        sumadorTotal(totalNumber)
+        sumadorTotal(totalNumber, 'sumar')
         AmountTotal()
         setearLsCantidad()
 
@@ -427,7 +474,12 @@ const addProduct = (e) => {
         openCart()
         textNoProducts()
         controladorProductos.cantidad++
-
+        let card2 = e.target.previousElementSibling.textContent
+        console.log(card2)
+        let totalString = card2.slice(1)
+        let totalNumber = parseFloat(totalString)
+        console.log(totalNumber)
+        sumadorTotal(totalNumber, 'sumar')
         AmountTotal()
         setearLsCantidad()
     }
@@ -565,9 +617,9 @@ const renderProductInDivCart = (product) => {
              <p class="cart_price">$${precioDiscount}</p>
          <div class="cart_quantity">
              <div class="cart__btn-add-remove">
-                <button class="cart__product-btn remove">-</button>
+                <button class="cart__product-btn remove" data-id="${id}">-</button>
                 <p class="cart__product-quanty">${cantidad}</p>
-                <button class="cart__product-btn add">+</button>  
+                <button class="cart__product-btn add" data-id="${id} ">+</button>  
              </div>
 <button class="cart__product-delete" data-id="${id}"><img src="Icons/remove-cart.png"  alt=""></button>
         </div>

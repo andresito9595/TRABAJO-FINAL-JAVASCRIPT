@@ -21,7 +21,9 @@ const swiper = new Swiper('.swiper', {
 const FORM = document.querySelector('form')
 const SEARCH_ICON = document.querySelector('.search-icon')
 const IMPUT_SEARCH = document.querySelector('.input-search')
+const SEARCH_DIV = document.querySelector('.search_container')
 const BODY = document.querySelector('body')
+const SEARCHING_DIV = document.querySelector('.searched_div')
 
 /* burger MENU */
 
@@ -69,7 +71,7 @@ const controladorProductos = {
 const renderCardProduct = (categoria) => {
     if (categoria === 'allProducts') {
         stock.forEach(e => {
-            renderProduct(e)
+            renderProduct(e, null)
         })
     } else if (order === 'mayor' || order === 'menor') {
         getLSOrderArray.forEach(e => {
@@ -373,7 +375,7 @@ const openCart = () => {
     CART_DIV.classList.toggle('cart__div-active')
     if (CART_DIV.classList.contains('cart__div-active')) {
         BURGER_MENU.classList.remove('burger__menu-active');
-        IMPUT_SEARCH.classList.remove('search_active');
+        SEARCH_DIV.classList.remove('search_active');
         if (OVERLAY) {
             OVERLAY.style.display = 'block'
         }
@@ -496,9 +498,10 @@ const deployMenu = (e) => {
         BURGER_MENU.classList.toggle('burger__menu-active');
         BODY.classList.toggle('overflow')
         if (BURGER_MENU.classList.contains('burger__menu-active')) {
-            IMPUT_SEARCH.classList.remove('search_active')
+            SEARCH_DIV.classList.remove('search_active')
             CART_DIV.classList.remove('cart__div-active')
             if (OVERLAY) {
+                closeCart
                 OVERLAY.style.display = 'block'
             }
         } else {
@@ -527,7 +530,7 @@ const deployCart = (e) => {
     CART_DIV.classList.toggle('cart__div-active')
     if (CART_DIV.classList.contains('cart__div-active')) {
         BURGER_MENU.classList.remove('burger__menu-active');
-        IMPUT_SEARCH.classList.remove('search_active');
+        SEARCH_DIV.classList.remove('search_active');
         if (OVERLAY) {
             OVERLAY.style.display = 'block'
         }
@@ -544,8 +547,8 @@ const deployCart = (e) => {
 
 const deploySearch = (e) => {
 
-    IMPUT_SEARCH.classList.toggle('search_active')
-    if (IMPUT_SEARCH.classList.contains('search_active')) {
+    SEARCH_DIV.classList.toggle('search_active')
+    if (SEARCH_DIV.classList.contains('search_active')) {
         BURGER_MENU.classList.remove('burger__menu-active')
         CART_DIV.classList.remove('cart__div-active')
     }
@@ -554,18 +557,58 @@ const deploySearch = (e) => {
 
 }
 
+const renderSearching = (product) => {
+
+
+    const { img, name } = product
+
+    return `
+    <div class="searched_product" style = "border: solid black .5px;">
+          <img src="${img}" alt="" />
+          <p>${name}</p>
+        </div>
+    `
+
+}
+
+
 const searchingProduct = (e) => {
 
+    let value = e.target.value.toLowerCase()
+
+
+
+    console.log('se activo')
+
+    searchProductOnStock(value)
 
 
 }
 
+const renderProductSearch = (arrayProductSearched) => {
+
+    SEARCHING_DIV.innerHTML = arrayProductSearched.map(e => renderSearching(e)).join('')
+
+
+}
+
+const searchProductOnStock = (value) => {
+    let producto = stock.filter(e => e.name.toLowerCase().includes(value))
+    if (value == '') {
+        producto = []
+    }
+
+    renderProductSearch(producto)
+}
 /* FUNCION RENDERIZADO */
 
-const renderProduct = (product) => {
+const renderProduct = (product, todos) => {
     const { name, description, price_normal, discount, img, category, id } = product;
     const precioDiscount = price_normal - (price_normal * (discount / 100))
-    let categoriaTitle = product === 'allProducts' ? `<h2>Todos</h2>` : `<h2>${category.toUpperCase()}</h2>`;
+    let categoriaTitle = `<h2>${category.toUpperCase()}</h2>`;
+    if (todos === null) {
+        categoriaTitle = `<h2>TODOS NUESTRO PRODUCTOS</h2>`
+    }
     if (NAME_CATEGORY_DIV) {
 
         NAME_CATEGORY_DIV.innerHTML = categoriaTitle;

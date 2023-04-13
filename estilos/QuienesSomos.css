@@ -1,0 +1,21 @@
+.div__container {
+  margin-top: 80px;
+  padding: 22px;
+  background-color: rgb(73, 62, 62);
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.h1 {
+  text-align: center;
+  width: 100%;
+  color: chocolate;
+  padding: 10px;
+}
+.p {
+  color: white;
+  font-size: 20px;
+}

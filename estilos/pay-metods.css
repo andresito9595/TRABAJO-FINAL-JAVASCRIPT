@@ -1,0 +1,46 @@
+main {
+}
+
+.div_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  width: 100%;
+  background-color: rgb(73, 62, 62);
+  padding: 17px;
+}
+
+.title__h1 {
+  font-size: 2.3rem;
+  color: rgb(213, 94, 9);
+}
+.title__h2 {
+  color: chocolate;
+  margin: 10px 5px;
+}
+.p {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.p span {
+  margin: 5px;
+  display: block;
+  color: chartreuse;
+}
+.div_container_final {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-color: black;
+  padding: 20px;
+  border: 2px solid white;
+}
+.p_final {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
